@@ -3,27 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanishka Utagikar's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Kanishka Utagikar - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="ml-background">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="ml-animation">
+            <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#4a4a4a;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#999;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <g class="neural-nodes">
+                <circle cx="50" cy="50" r="3" fill="url(#grad)" class="central-node pulse"/>
+                <circle cx="30" cy="30" r="2" fill="url(#grad)" class="node node1"/>
+                <circle cx="70" cy="30" r="2" fill="url(#grad)" class="node node2"/>
+                <circle cx="30" cy="70" r="2" fill="url(#grad)" class="node node3"/>
+                <circle cx="70" cy="70" r="2" fill="url(#grad)" class="node node4"/>
+                <path d="M50,50 L30,30" stroke="url(#grad)" stroke-width="0.5" class="connection"/>
+                <path d="M50,50 L70,30" stroke="url(#grad)" stroke-width="0.5" class="connection"/>
+                <path d="M50,50 L30,70" stroke="url(#grad)" stroke-width="0.5" class="connection"/>
+                <path d="M50,50 L70,70" stroke="url(#grad)" stroke-width="0.5" class="connection"/>
+            </g>
+        </svg>
+    </div>
+
     <header>
         <h1>Kanishka Utagikar</h1>
-        <p>Hardworking Information Technology Student | Web Developer | ML Enthusiast</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <p>Information Technology Student | Web Developer | ML Enthusiast</p>
     </header>
+
     <main>
-        <section id="about">
+        <section id="summary">
             <h2>About Me</h2>
             <p>
-                I am an ambitious IT student skilled in Machine Learning, Data Science, and Web Development.
-                Feel free to connect with me on:
+                I'm a passionate Information Technology student with a deep focus on Machine Learning, Data Science, and Web Development. 
+                My journey is driven by a curiosity to solve complex problems through innovative technological solutions. 
+                I thrive on transforming data into meaningful insights and creating intelligent systems that can learn and adapt.
+                With a strong foundation in programming and a keen interest in emerging technologies, 
+                I'm dedicated to pushing the boundaries of what's possible at the intersection of AI and software development.
             </p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Bengaluru Property Price Estimator</h3>
+                <p>
+                    A FastAPI application for predicting real estate prices using machine learning techniques.
+                    Implemented advanced feature engineering and predictive modeling.
+                    <a href="https://github.com/kanishkautag/Bengaluru-House-Prices" target="_blank">GitHub Link</a>
+                </p>
+            </div>
+            <div class="project">
+                <h3>Research Paper Title Generator</h3>
+                <p>
+                    Fine-tuned GPT-2 model to generate contextually relevant research paper titles.
+                    Demonstrated natural language processing skills and generative AI capabilities.
+                    <a href="https://huggingface.co/Kan05/Paper-Title-Generator-GPT2" target="_blank">View Project</a>
+                </p>
+            </div>
+            <div class="project">
+                <h3>BERT Text Processing</h3>
+                <p>
+                    Flask-based application utilizing BERT for advanced text summarization and question-answering tasks.
+                    Showcased deep learning implementation in natural language understanding.
+                    <a href="https://github.com/kanishkautag/BERT-Text-Summarization" target="_blank">GitHub Link</a>
+                </p>
+            </div>
+        </section>
+
+        <section id="socials">
+            <h2>Connect With Me</h2>
             <ul>
                 <li><a href="https://github.com/kanishkautag" target="_blank">GitHub</a></li>
                 <li><a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223" target="_blank">LinkedIn</a></li>
@@ -31,36 +84,16 @@
                 <li><a href="#" target="_blank">Codeforces</a></li>
             </ul>
         </section>
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Bengaluru Property Price Estimator</h3>
-                <p>
-                    A FastAPI application for predicting real estate prices using features like size and location.
-                    <a href="https://github.com/kanishkautag/Bengaluru-House-Prices" target="_blank">GitHub Link</a>
-                </p>
-            </div>
-            <div class="project">
-                <h3>Research Paper Title Generator</h3>
-                <p>
-                    Fine-tuned GPT-2 to generate research paper titles.
-                    <a href="https://huggingface.co/Kan05/Paper-Title-Generator-GPT2" target="_blank">View Project</a>
-                </p>
-            </div>
-            <div class="project">
-                <h3>BERT Text Processing</h3>
-                <p>
-                    Flask-based app using BERT for text summarization and QA tasks.
-                    <a href="https://github.com/kanishkautag/BERT-Text-Summarization" target="_blank">GitHub Link</a>
-                </p>
-            </div>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:kanishka.utagikar@gmail.com">kanishka.utagikar@gmail.com</a></p>
         </section>
     </main>
+
     <footer>
-        <p>© 2024 Kanishka Utagikar</p>
+        <p>© 2024 Kanishka Utagikar | Crafted with passion for technology</p>
     </footer>
-
-
 
     <script src="script.js"></script>
 </body>
