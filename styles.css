@@ -167,9 +167,9 @@ header {
 /* Theme Toggle Button */
 .theme-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
 }
 
 #themeToggle {
