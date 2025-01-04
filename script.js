@@ -168,18 +168,32 @@
 // Theme toggle functionality - added separately
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
-    
-    // Check for saved theme preference
+
+    // Ensure the themeToggle button exists
+    if (!themeToggle) {
+        console.error('Theme toggle button not found');
+        return;
+    }
+
+    // Check for saved theme preference or default to 'light'
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Set the initial button text based on the theme
     themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
     
+    // Add event listener for theme toggle click
     themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
+        // Apply the new theme
         document.documentElement.setAttribute('data-theme', newTheme);
+
+        // Save the new theme in localStorage
         localStorage.setItem('theme', newTheme);
+
+        // Change the button text to match the new theme
         themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
     });
 });
