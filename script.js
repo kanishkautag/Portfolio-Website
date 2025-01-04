@@ -1,25 +1,4 @@
-// Theme toggle functionality
-const initThemeToggle = () => {
-    const themeToggle = document.getElementById('themeToggle');
-    if (!themeToggle) return; // Guard clause if element doesn't exist
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-    
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
-    });
-};
-
-// Oneko cat animation (your original oneko code here)
-const createOneko = () => {
+(function oneko() {
     const nekoEl = document.createElement("div");
     let nekoPosX = 32;
     let nekoPosY = 32;
@@ -113,8 +92,15 @@ const createOneko = () => {
     function idle() {
         idleTime += 1;
 
-        if (idleTime > 10 && Math.floor(Math.random() * 200) == 0 && idleAnimation == null) {
-            idleAnimation = ["sleeping", "scratch"][Math.floor(Math.random() * 2)];
+        // every ~ 20 seconds
+        if (
+            idleTime > 10 &&
+            Math.floor(Math.random() * 200) == 0 &&
+            idleAnimation == null
+        ) {
+            idleAnimation = ["sleeping", "scratch"][
+                Math.floor(Math.random() * 2)
+            ];
         }
 
         switch (idleAnimation) {
@@ -157,6 +143,7 @@ const createOneko = () => {
 
         if (idleTime > 1) {
             setSprite("alert", 0);
+            // count down after being alerted before moving
             idleTime = Math.min(idleTime, 7);
             idleTime -= 1;
             return;
@@ -176,10 +163,4 @@ const createOneko = () => {
     }
 
     create();
-};
-
-// Initialize both features when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initThemeToggle(); // Initialize theme toggle
-    createOneko();     // Initialize oneko
-});
+})();
