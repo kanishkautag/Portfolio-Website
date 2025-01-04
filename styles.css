@@ -24,7 +24,6 @@ body {
     position: relative;
 }
 
-
 /* Header Styles */
 header {
     text-align: center;
@@ -107,7 +106,6 @@ section h2 {
     text-decoration: underline;
 }
 
-
 /* Footer Styles */
 footer {
     text-align: center;
@@ -127,6 +125,7 @@ footer {
         font-size: 2rem;
     }
 }
+
 /* Theme Variables */
 :root {
     --bg-color: #ffffff;
