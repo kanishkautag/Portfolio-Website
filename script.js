@@ -1,4 +1,5 @@
-(function oneko() {
+// Oneko cat animation
+const createOneko = () => {
     const nekoEl = document.createElement("div");
     let nekoPosX = 32;
     let nekoPosY = 32;
@@ -92,15 +93,8 @@
     function idle() {
         idleTime += 1;
 
-        // every ~ 20 seconds
-        if (
-            idleTime > 10 &&
-            Math.floor(Math.random() * 200) == 0 &&
-            idleAnimation == null
-        ) {
-            idleAnimation = ["sleeping", "scratch"][
-                Math.floor(Math.random() * 2)
-            ];
+        if (idleTime > 10 && Math.floor(Math.random() * 200) == 0 && idleAnimation == null) {
+            idleAnimation = ["sleeping", "scratch"][Math.floor(Math.random() * 2)];
         }
 
         switch (idleAnimation) {
@@ -143,7 +137,6 @@
 
         if (idleTime > 1) {
             setSprite("alert", 0);
-            // count down after being alerted before moving
             idleTime = Math.min(idleTime, 7);
             idleTime -= 1;
             return;
@@ -163,10 +156,13 @@
     }
 
     create();
-})();
+};
 
-
+// Theme toggle functionality
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize oneko
+    createOneko();
+    
     const themeToggle = document.getElementById('themeToggle');
     
     // Check for saved theme preference
@@ -182,8 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', newTheme);
         updateToggleButton(newTheme);
     });
-    
-    function updateToggleButton(theme) {
-        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
-    }
 });
+
+function updateToggleButton(theme) {
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+}
