@@ -112,10 +112,32 @@
         <p>© 2024 Kanishka Utagikar | Crafted with passion for technology</p>
     </footer>
 
-    <script src="script.js" defer></script>
-    <div class="theme-toggle">
-        <button id="themeToggle" aria-label="Toggle theme">🌙</button>
-    </div>
-    </body>
-    </html>
-    
+ <script src="script.js" defer></script>
+ <div class="theme-toggle">
+    <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+</div>
+
+<script>
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('themeToggle');
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+        
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            // Update theme
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
+        });
+    });
+</script>
+</body>
+</html>
