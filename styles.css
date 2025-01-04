@@ -1,10 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 :root {
-    --bg-color: #f5f4f0;
-    --text-color: #3a3a3a;
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --header-bg: #f5f5f5;
+    --project-bg: #ffffff;
+    --border-color: #e0e0e0;
     --accent-color: #4a4a4a;
+    --project-text: #555;
+    --project-heading: #333;
     --paper-shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --header-bg: #2d2d2d;
+    --project-bg: #2d2d2d;
+    --border-color: #404040;
+    --accent-color: #cccccc;
+    --project-text: #e0e0e0;
+    --project-heading: #ffffff;
+    --paper-shadow: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -22,6 +39,7 @@ body {
     margin: 0 auto;
     padding: 1rem;
     position: relative;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Header Styles */
@@ -30,6 +48,7 @@ header {
     padding: 2rem 0;
     border-bottom: 2px solid var(--accent-color);
     margin-bottom: 2rem;
+    background-color: var(--header-bg);
 }
 
 header h1 {
@@ -71,39 +90,49 @@ section h2 {
 
 /* Project Styles */
 .project {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     margin-bottom: 20px;
     padding: 16px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--project-bg);
+    box-shadow: 0 4px 6px var(--paper-shadow);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 12px var(--paper-shadow);
 }
 
 .project h3 {
     font-size: 1.2em;
     margin-bottom: 8px;
-    color: #333;
+    color: var(--project-heading);
 }
 
 .project p {
     font-size: 1em;
     margin-bottom: 10px;
-    color: #555;
+    color: var(--project-text);
 }
 
-.project a {
+/* Link Styles */
+a {
     color: #007bff;
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+[data-theme="dark"] a {
+    color: #66b3ff;
 }
 
 .project a:hover {
     text-decoration: underline;
+}
+
+#socials ul li a {
+    color: var(--text-color);
 }
 
 /* Footer Styles */
@@ -113,54 +142,6 @@ footer {
     border-top: 1px solid var(--accent-color);
     color: var(--accent-color);
     opacity: 0.7;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-    body {
-        padding: 0.5rem;
-    }
-    
-    header h1 {
-        font-size: 2rem;
-    }
-}
-
-/* Theme Variables */
-:root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --header-bg: #f5f5f5;
-    --project-bg: #ffffff;
-    --border-color: #e0e0e0;
-}
-
-[data-theme="dark"] {
-    --bg-color: #1a1a1a;
-    --text-color: #ffffff;
-    --header-bg: #2d2d2d;
-    --project-bg: #2d2d2d;
-    --border-color: #404040;
-}
-
-/* Apply variables */
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-header {
-    background-color: var(--header-bg);
-}
-
-.project {
-    background-color: var(--project-bg);
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 /* Theme Toggle Button */
@@ -184,7 +165,7 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--project-bg);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px var(--paper-shadow);
     transition: transform 0.2s;
 }
 
@@ -192,33 +173,37 @@ header {
     transform: scale(1.1);
 }
 
-/* Update link colors */
-a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s;
+/* ML Background Animation */
+.ml-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
 }
 
-[data-theme="dark"] a {
-    color: #66b3ff;
+.ml-animation {
+    width: 100%;
+    height: 100%;
 }
 
-/* Update social links */
-#socials ul li a {
-    color: var(--text-color);
+.neural-nodes circle {
+    fill: var(--accent-color);
 }
 
-/* Enhance project hover effect */
-.project:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.neural-nodes path {
+    stroke: var(--accent-color);
 }
 
-/* Neural network animation adjustments for dark mode */
-[data-theme="dark"] .neural-nodes circle {
-    fill: #666;
-}
-
-[data-theme="dark"] .neural-nodes path {
-    stroke: #666;
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
 }

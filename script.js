@@ -1,189 +1,209 @@
-(function oneko() {
-    const nekoEl = document.createElement("div");
-    let nekoPosX = 32;
-    let nekoPosY = 32;
-    let mousePosX = 0;
-    let mousePosY = 0;
-    let frameCount = 0;
-    let idleTime = 0;
-    let idleAnimation = null;
-    let idleAnimationFrame = 0;
-    const nekoSpeed = 10;
-    const spriteSets = {
-        idle: [[-3, -3]],
-        alert: [[-7, -3]],
-        scratch: [
-            [-5, 0],
-            [-6, 0],
-            [-7, 0],
-        ],
-        tired: [[-3, -2]],
-        sleeping: [
-            [-2, 0],
-            [-2, -1],
-        ],
-        N: [
-            [-1, -2],
-            [-1, -3],
-        ],
-        NE: [
-            [0, -2],
-            [0, -3],
-        ],
-        E: [
-            [-3, 0],
-            [-3, -1],
-        ],
-        SE: [
-            [-5, -1],
-            [-5, -2],
-        ],
-        S: [
-            [-6, -3],
-            [-7, -2],
-        ],
-        SW: [
-            [-5, -3],
-            [-6, -1],
-        ],
-        W: [
-            [-4, -2],
-            [-4, -3],
-        ],
-        NW: [
-            [-1, 0],
-            [-1, -1],
-        ],
-    };
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
-    function create() {
-        nekoEl.id = "oneko";
-        nekoEl.style.width = "32px";
-        nekoEl.style.height = "32px";
-        nekoEl.style.position = "fixed";
-        nekoEl.style.backgroundImage = "url('oneko.gif')";
-        nekoEl.style.backgroundRepeat = "no-repeat";
-        nekoEl.style.imageRendering = "pixelated";
-        nekoEl.style.zIndex = "9999";
-        nekoEl.style.pointerEvents = "none";
-        nekoEl.style.left = "16px";
-        nekoEl.style.top = "16px";
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --header-bg: #f5f5f5;
+    --project-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --accent-color: #4a4a4a;
+    --project-text: #555;
+    --project-heading: #333;
+    --paper-shadow: rgba(0, 0, 0, 0.1);
+}
 
-        document.body.appendChild(nekoEl);
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --header-bg: #2d2d2d;
+    --project-bg: #2d2d2d;
+    --border-color: #404040;
+    --accent-color: #cccccc;
+    --project-text: #e0e0e0;
+    --project-heading: #ffffff;
+    --paper-shadow: rgba(255, 255, 255, 0.1);
+}
 
-        document.addEventListener('mousemove', (event) => {
-            mousePosX = event.clientX;
-            mousePosY = event.clientY;
-        });
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        window.onekoInterval = setInterval(frame, 100);
+body {
+    font-family: 'Special Elite', cursive;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 2px solid var(--accent-color);
+    margin-bottom: 2rem;
+    background-color: var(--header-bg);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    color: var(--accent-color);
+}
+
+header p {
+    font-size: 1rem;
+    color: var(--accent-color);
+    opacity: 0.8;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+#summary p, #contact p {
+    text-align: justify;
+}
+
+#socials ul, #contact ul {
+    list-style-type: none;
+    padding-left: 1rem;
+}
+
+#socials ul li, #contact ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Project Styles */
+.project {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background-color: var(--project-bg);
+    box-shadow: 0 4px 6px var(--paper-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px var(--paper-shadow);
+}
+
+.project h3 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: var(--project-heading);
+}
+
+.project p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: var(--project-text);
+}
+
+/* Link Styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+[data-theme="dark"] a {
+    color: #66b3ff;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+#socials ul li a {
+    color: var(--text-color);
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    opacity: 0.7;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--project-bg);
+    box-shadow: 0 2px 5px var(--paper-shadow);
+    transition: transform 0.2s;
+}
+
+#themeToggle:hover {
+    transform: scale(1.1);
+}
+
+/* ML Background Animation */
+.ml-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.ml-animation {
+    width: 100%;
+    height: 100%;
+}
+
+.neural-nodes circle {
+    fill: var(--accent-color);
+}
+
+.neural-nodes path {
+    stroke: var(--accent-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
     }
-
-    function setSprite(name, frame) {
-        const sprite = spriteSets[name][frame % spriteSets[name].length];
-        nekoEl.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 32}px`;
-    }
-
-    function resetIdleAnimation() {
-        idleAnimation = null;
-        idleAnimationFrame = 0;
-    }
-
-    function idle() {
-        idleTime += 1;
-
-        // every ~ 20 seconds
-        if (
-            idleTime > 10 &&
-            Math.floor(Math.random() * 200) == 0 &&
-            idleAnimation == null
-        ) {
-            idleAnimation = ["sleeping", "scratch"][
-                Math.floor(Math.random() * 2)
-            ];
-        }
-
-        switch (idleAnimation) {
-            case "sleeping":
-                if (idleAnimationFrame < 8) {
-                    setSprite("tired", 0);
-                    break;
-                }
-                setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
-                if (idleAnimationFrame > 192) {
-                    resetIdleAnimation();
-                }
-                break;
-            case "scratch":
-                setSprite("scratch", idleAnimationFrame);
-                if (idleAnimationFrame > 9) {
-                    resetIdleAnimation();
-                }
-                break;
-            default:
-                setSprite("idle", 0);
-                return;
-        }
-        idleAnimationFrame += 1;
-    }
-
-    function frame() {
-        frameCount += 1;
-        const diffX = nekoPosX - mousePosX;
-        const diffY = nekoPosY - mousePosY;
-        const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
-
-        if (distance < nekoSpeed || distance < 48) {
-            idle();
-            return;
-        }
-
-        idleAnimation = null;
-        idleAnimationFrame = 0;
-
-        if (idleTime > 1) {
-            setSprite("alert", 0);
-            // count down after being alerted before moving
-            idleTime = Math.min(idleTime, 7);
-            idleTime -= 1;
-            return;
-        }
-
-        let direction = diffY / distance > 0.5 ? "N" : "";
-        direction += diffY / distance < -0.5 ? "S" : "";
-        direction += diffX / distance > 0.5 ? "W" : "";
-        direction += diffX / distance < -0.5 ? "E" : "";
-        setSprite(direction, frameCount);
-
-        nekoPosX -= (diffX / distance) * nekoSpeed;
-        nekoPosY -= (diffY / distance) * nekoSpeed;
-
-        nekoEl.style.left = `${nekoPosX - 16}px`;
-        nekoEl.style.top = `${nekoPosY - 16}px`;
-    }
-
-    create();
-})();
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('themeToggle');
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateToggleButton(savedTheme);
-    
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateToggleButton(newTheme);
-    });
-    
-    function updateToggleButton(theme) {
-        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+    header h1 {
+        font-size: 2rem;
     }
-});
+}
