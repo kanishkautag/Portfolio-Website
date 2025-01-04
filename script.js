@@ -1,4 +1,24 @@
-// Oneko cat animation
+// Theme toggle functionality
+const initThemeToggle = () => {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return; // Guard clause if element doesn't exist
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
+    });
+};
+
+// Oneko cat animation (your original oneko code here)
 const createOneko = () => {
     const nekoEl = document.createElement("div");
     let nekoPosX = 32;
@@ -158,29 +178,8 @@ const createOneko = () => {
     create();
 };
 
-// Theme toggle functionality
+// Initialize both features when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize oneko
-    createOneko();
-    
-    const themeToggle = document.getElementById('themeToggle');
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateToggleButton(savedTheme);
-    
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateToggleButton(newTheme);
-    });
+    initThemeToggle(); // Initialize theme toggle
+    createOneko();     // Initialize oneko
 });
-
-function updateToggleButton(theme) {
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
-}
