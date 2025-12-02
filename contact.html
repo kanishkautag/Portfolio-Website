@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Kanishka Utagikar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        tokyo: {
+                            bg: '#0f0f14',
+                            card: 'rgba(36, 40, 59, 0.4)',
+                            fg: '#a9b1d6',
+                            accent: '#bb9af7',
+                            cyan: '#7dcfff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; background-color: #0f0f14; overflow: hidden; }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .glass-panel { background: rgba(16, 16, 20, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body class="text-tokyo-fg antialiased h-screen flex flex-col">
+
+    <div id="bg-canvas"></div>
+
+    <nav class="fixed w-full z-50 glass-panel border-b-0 top-0">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-mono text-sm font-bold text-tokyo-cyan">Kanishka Utagikar</a>
+            <div class="space-x-8 hidden md:flex font-mono text-xs">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="projects.html" class="hover:text-white transition">Projects</a>
+                <a href="contact.html" class="text-white">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-6">
+        <div class="glass-panel p-10 rounded-xl shadow-2xl text-center max-w-lg w-full">
+            <h1 class="text-2xl font-bold text-white mb-2">Connect</h1>
+            <p class="text-xs text-gray-400 mb-8">Open to internships & collaborations.</p>
+
+            <div class="grid gap-3">
+                <a href="https://drive.google.com/file/d/1OegPSe6gGOmWJiMjJxjoSyT6oF0qgHTn/view?usp=sharing" target="_blank" class="flex items-center justify-center gap-2 bg-tokyo-cyan text-black font-bold py-3 rounded hover:bg-white transition-all text-sm">
+                    <i data-lucide="file-text" class="w-4 h-4"></i> View Resume
+                </a>
+                
+                <a href="mailto:kanishka.utagikar@gmail.com" class="flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-mono py-3 rounded hover:bg-white/10 transition-all text-sm">
+                    <i data-lucide="mail" class="w-4 h-4"></i> kanishka.utagikar@gmail.com
+                </a>
+
+                <div class="grid grid-cols-2 gap-3 mt-2">
+                    <a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded bg-[#0077b5]/20 text-[#0077b5] border border-[#0077b5]/30 hover:bg-[#0077b5] hover:text-white transition-all text-sm">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/kanishkautag" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded bg-white/5 text-white border border-white/10 hover:bg-white/20 transition-all text-sm">
+                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="oneko.js"></script>
+    <script>lucide.createIcons();</script>
+    
+    <!-- PASSIVE BACKGROUND SCRIPT -->
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 50;
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('bg-canvas').appendChild(renderer.domElement);
+        
+        const particleCount = 700;
+        const positions = new Float32Array(particleCount * 3);
+        const geometry = new THREE.BufferGeometry();
+        for (let i = 0; i < particleCount; i++) {
+            const r = 40 + Math.random() * 20;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
+            positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+            positions[i*3+2] = r * Math.cos(phi);
+        }
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0x555577, size: 0.7, transparent: true, opacity: 0.5 }));
+        scene.add(particles);
+
+        function animateBg() {
+            requestAnimationFrame(animateBg);
+            particles.rotation.y += 0.001;
+            particles.rotation.x += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animateBg();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

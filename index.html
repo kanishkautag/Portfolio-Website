@@ -3,140 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanishka Utagikar - Portfolio</title>
-    
-    <!-- Tailwind CSS -->
+    <title>Kanishka Utagikar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script>
-        // Custom Tailwind Theme Configuration
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'special': ['"Special Elite"', 'cursive'],
-                        'sans': ['"Inter"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Inter"', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#50207A',    // Main background
-                        'accent': '#838CEF',     // Buttons, links, highlights
-                        'text-main': '#D6B9FC',  // Main text
-                        'text-muted': '#a88ddf', // Muted/secondary text
+                        tokyo: {
+                            bg: '#0f0f14',
+                            card: 'rgba(20, 20, 25, 0.7)',
+                            fg: '#a9b1d6',
+                            accent: '#bb9af7',
+                            cyan: '#7dcfff',
+                            green: '#9ece6a',
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        body { margin: 0; overflow-x: hidden; background-color: #0f0f14; }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .glass-panel {
+            background: rgba(15, 15, 20, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-text { text-shadow: 0 0 10px rgba(125, 207, 255, 0.5); }
+    </style>
 </head>
+<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan selection:text-tokyo-bg">
 
-<body class="bg-primary font-sans text-text-main transition-colors duration-300">
-    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div id="bg-canvas"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 top-0">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-mono text-sm font-bold text-tokyo-cyan">Kanishka Utagikar</a>
+            <div class="space-x-8 hidden md:flex font-mono text-xs">
+                <a href="index.html" class="text-white">Home</a>
+                <a href="projects.html" class="hover:text-tokyo-cyan transition">Projects</a>
+                <a href="contact.html" class="hover:text-tokyo-cyan transition">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-48 pb-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
         
-        <!-- Header -->
-        <header class="text-center py-16">
-            <a href="index.html" class="inline-block">
-                <h1 class="font-special text-5xl md:text-6xl font-bold text-white">Kanishka Utagikar</h1>
-            </a>
-            <p class="mt-4 text-lg text-text-muted">Pre-Final Year IT Student | Machine Learning Enthusiast</p>
-        </header>
+        <!-- Hero: Minimalist -->
+        <div class="max-w-3xl mb-32">
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-4 tracking-tighter">
+                Kanishka Utagikar.
+            </h1>
+            <p class="text-2xl md:text-3xl text-tokyo-fg/60 font-light">
+                Pre-final year IT student building production-grade AI/ML systems with real-world impact.
+            </p>
+        </div>
 
-        <main class="space-y-24">
+        <!-- Achievements Section -->
+        <div id="achievements" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-32">
+            <div class="glass-panel p-6 rounded hover:bg-white/5 transition duration-500">
+                <div class="text-tokyo-cyan mb-2 text-xs font-mono uppercase">Amazon ML Challenge</div>
+                <div class="text-2xl font-bold text-white">Top 200</div>
+                <div class="text-xs text-gray-500 mt-1">Rank 183 / 20k+</div>
+            </div>
+            <div class="glass-panel p-6 rounded hover:bg-white/5 transition duration-500">
+                <div class="text-tokyo-accent mb-2 text-xs font-mono uppercase">Need For Code</div>
+                <div class="text-2xl font-bold text-white">Runner Up</div>
+                <div class="text-xs text-gray-500 mt-1">AI/ML Domain</div>
+            </div>
+            <div class="glass-panel p-6 rounded hover:bg-white/5 transition duration-500">
+                <div class="text-tokyo-green mb-2 text-xs font-mono uppercase">Codeforces</div>
+                <div class="text-2xl font-bold text-white">1261</div>
+                <div class="text-xs text-gray-500 mt-1">Max Rating (Pupil)</div>
+            </div>
+        </div>
 
-            <!-- About Me Section -->
-            <section id="summary" class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-8 text-center shadow-lg">
-                <h2 class="text-3xl font-bold mb-6 font-special text-white">About Me</h2>
-                <p class="max-w-2xl mx-auto text-text-main mb-6">
-                    I'm a Pre-Final Year Student at Thadomal Shahani Engineering College, passionate about AI, especially NLP and building efficient models. I'm actively developing projects and exploring research ideas. Open to internships and collaborations—feel free to reach out!
-                </p>
-                <a href="https://drive.google.com/file/d/1BARC6Iw3hCnJrVp-iP01wV-7lGoznvdE/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 bg-accent text-white font-semibold px-6 py-3 rounded-lg hover:bg-opacity-80 transition-transform hover:scale-105 duration-200 shadow-lg">
-                    <i data-lucide="file-text"></i>
-                    View Resume
-                </a>
-            </section>
+        <!-- Neural Network Visualization (Updated UI) -->
+        <div class="w-full max-w-3xl mx-auto mb-20">
+            <div class="flex flex-col items-center mb-6">
+                <h3 class="font-mono text-xl font-bold text-white glow-text mb-2">NEURAL INFERENCE ENGINE</h3>
+                <p class="text-sm text-tokyo-cyan animate-pulse">Click a number below to see the magic happen ↓</p>
+                <span class="font-mono text-xs text-gray-500 mt-2" id="status-text">WAITING FOR INPUT...</span>
+            </div>
+            
+            <div id="input-buttons" class="flex gap-2 mb-4 justify-center"></div>
+            
+            <div class="relative">
+                <canvas id="nn-canvas" width="700" height="250" class="w-full bg-black/40 rounded-lg border border-tokyo-cyan/20 shadow-[0_0_30px_rgba(125,207,255,0.1)]"></canvas>
+            </div>
+            
+            <div id="prediction-bars" class="flex items-end gap-[2px] h-4 mt-2 w-full opacity-80"></div>
+        </div>
 
-            <!-- Featured Projects Section -->
-            <section id="projects">
-                <h2 class="text-3xl font-bold text-center mb-12 font-special text-white">Featured Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <!-- Project Card: AURA -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">AURA: Cosmic Weather Prediction</h3>
-                        <p class="text-text-muted mb-4 flex-grow">A predictive analytics platform to forecast space weather, quantify financial impact, and provide actionable intelligence to insurers.</p>
-                        <div class="mt-auto flex gap-4">
-                            <a href="https://github.com/kanishkautag/Aura-Codeissance2k25" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card: Clause.ai -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">Clause.ai</h3>
-                        <p class="text-text-muted mb-4 flex-grow">AI-powered legal assistant that transforms plain English into precise legal clauses and evaluates contractual risk using a RAG pipeline.</p>
-                        <div class="mt-auto flex gap-4">
-                            <a href="https://github.com/kanishkautag/Clause.ai" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-12">
-                     <a href="projects.html" class="inline-flex items-center gap-2 text-accent font-semibold px-6 py-3 rounded-lg hover:bg-white/10 transition-colors duration-200">
-                        View All Projects
-                        <i data-lucide="arrow-right"></i>
-                    </a>
-                </div>
-            </section>
+    </main>
 
+    <script src="oneko.js"></script>
+    <script>lucide.createIcons();</script>
 
-            <!-- Tech Stack Section -->
-            <section id="tech-stack">
-                 <h2 class="text-3xl font-bold text-center mb-12 font-special text-white">My Tech Stack</h2>
-                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center">
-                        <h3 class="font-bold text-lg text-accent mb-2">Web Development</h3>
-                        <p class="text-sm text-text-muted">FastAPI, Flask, Streamlit, Shiny, HTML, CSS</p>
-                    </div>
-                     <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center">
-                        <h3 class="font-bold text-lg text-accent mb-2">ML & AI</h3>
-                        <p class="text-sm text-text-muted">PyTorch, TensorFlow, Transformers, Scikit-learn, RAG, LangChain</p>
-                    </div>
-                     <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center">
-                        <h3 class="font-bold text-lg text-accent mb-2">Data Handling</h3>
-                        <p class="text-sm text-text-muted">Pandas, NumPy, Matplotlib, Seaborn, Folium</p>
-                    </div>
-                     <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center">
-                        <h3 class="font-bold text-lg text-accent mb-2">Web Scraping</h3>
-                        <p class="text-sm text-text-muted">Beautiful Soup, Scrapy</p>
-                    </div>
-                 </div>
-            </section>
-
-            <!-- Socials Section -->
-            <section id="socials" class="text-center">
-                 <h2 class="text-3xl font-bold text-center mb-8 font-special text-white">Connect With Me</h2>
-                 <div class="flex justify-center gap-6">
-                    <a href="https://github.com/kanishkautag" target="_blank" class="text-text-muted hover:text-accent transition-colors"><i data-lucide="github" class="w-7 h-7"></i></a>
-                    <a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223" target="_blank" class="text-text-muted hover:text-accent transition-colors"><i data-lucide="linkedin" class="w-7 h-7"></i></a>
-                    <a href="https://x.com/KanishkaUt18947" target="_blank" class="text-text-muted hover:text-accent transition-colors"><i data-lucide="twitter" class="w-7 h-7"></i></a>
-                 </div>
-            </section>
-
-        </main>
-
-        <!-- Footer -->
-        <footer class="text-center py-12 mt-16 border-t border-white/10">
-            <p class="text-text-muted">© 2025 Kanishka Utagikar | <a href="mailto:kanishka.utagikar@gmail.com" class="hover:text-accent">kanishka.utagikar@gmail.com</a></p>
-        </footer>
-    </div>
-
+    <!-- 1. PASSIVE BACKGROUND (No Interaction) -->
     <script>
-        lucide.createIcons();
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 50;
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('bg-canvas').appendChild(renderer.domElement);
+        
+        const particleCount = 700;
+        const positions = new Float32Array(particleCount * 3);
+        const geometry = new THREE.BufferGeometry();
+        
+        for (let i = 0; i < particleCount; i++) {
+            const r = 40 + Math.random() * 20;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            
+            const x = r * Math.sin(phi) * Math.cos(theta);
+            const y = r * Math.sin(phi) * Math.sin(theta);
+            const z = r * Math.cos(phi);
+            
+            positions[i*3] = x; 
+            positions[i*3+1] = y; 
+            positions[i*3+2] = z;
+        }
+        
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const material = new THREE.PointsMaterial({ color: 0x555577, size: 0.7, transparent: true, opacity: 0.5 });
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        function animateBg() {
+            requestAnimationFrame(animateBg);
+            particles.rotation.y += 0.001; 
+            particles.rotation.x += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animateBg();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+
+    <!-- 2. NEURAL NETWORK LOGIC -->
+    <script>
+        (function() {
+            const btnContainer = document.getElementById('input-buttons');
+            const barContainer = document.getElementById('prediction-bars');
+            const statusText = document.getElementById('status-text');
+            const canvas = document.getElementById('nn-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // --- UI ---
+            for(let i=0; i<10; i++){
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = "w-8 h-8 rounded bg-white/10 hover:bg-tokyo-cyan hover:text-black text-sm font-bold font-mono transition-all border border-white/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(125,207,255,0.5)]";
+                btn.onclick = () => runPass(i);
+                btnContainer.appendChild(btn);
+
+                const bar = document.createElement('div');
+                bar.id = `bar-${i}`;
+                bar.className = "flex-1 bg-tokyo-cyan transition-all duration-300 rounded-t-sm";
+                bar.style.height = "5%"; 
+                barContainer.appendChild(bar);
+            }
+
+            // --- Network Structure ---
+            const layers = [];
+            const layerCounts = [10, 16, 16, 10];
+            const connections = [];
+
+            layerCounts.forEach((count, lIdx) => {
+                const nodes = [];
+                const hSpacing = canvas.width / (layerCounts.length + 1);
+                const vSpacing = canvas.height / (count + 1);
+                for(let i=0; i<count; i++) {
+                    nodes.push({ x: hSpacing * (lIdx + 1), y: vSpacing * (i + 1), val: 0, target: 0 });
+                }
+                layers.push(nodes);
+            });
+
+            // Initialize Connections with Variable Weights
+            for(let l=0; l<layers.length-1; l++) {
+                const conns = [];
+                for(let i=0; i<layers[l].length; i++) {
+                    for(let j=0; j<layers[l+1].length; j++) {
+                        // Weight represents connection strength (0.1 to 1.0)
+                        const weight = Math.random(); 
+                        conns.push({ 
+                            from: layers[l][i], 
+                            to: layers[l+1][j], 
+                            weight: weight, 
+                            signal: 0 
+                        });
+                    }
+                }
+                connections.push(conns);
+            }
+
+            function runPass(digit) {
+                statusText.innerText = `ANALYZING INPUT [${digit}]...`;
+                statusText.style.color = "#7dcfff";
+                
+                // Reset targets
+                layers.forEach(l => l.forEach(n => n.target = 0));
+                
+                // Input Activation
+                layers[0].forEach((n, i) => n.target = (i===digit) ? 1 : 0);
+                
+                // Sparse Activation Logic for Hidden Layers
+                for(let l=1; l<layers.length-1; l++) {
+                    const activeCount = 3 + Math.floor(Math.random() * 2); 
+                    const activeIndices = new Set();
+                    while(activeIndices.size < activeCount) {
+                        activeIndices.add(Math.floor(Math.random() * layers[l].length));
+                    }
+                    
+                    layers[l].forEach((n, idx) => {
+                        if (activeIndices.has(idx)) {
+                            n.target = 0.8 + Math.random() * 0.2; 
+                        } else {
+                            n.target = 0; 
+                        }
+                    });
+                }
+
+                // Output Activation
+                layers[3].forEach((n, i) => n.target = (i===digit) ? 1 : 0);
+
+                // Update Bars
+                layers[3].forEach((n, i) => {
+                    document.getElementById(`bar-${i}`).style.height = (i===digit) ? "100%" : "5%";
+                });
+
+                // Trigger Pulse sequence
+                connections.forEach((layerConns, idx) => {
+                    setTimeout(() => {
+                        layerConns.forEach(c => {
+                            // Only send signal if source neuron is active
+                            if(c.from.target > 0.1) {
+                                c.signal = 1;
+                            }
+                        });
+                    }, idx * 200); 
+                });
+                
+                setTimeout(() => {
+                    statusText.innerText = `PREDICTION: ${digit} (CONFIDENCE: 99.9%)`;
+                    statusText.style.color = "#9ece6a";
+                }, 800);
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // 1. Draw Connections first
+                connections.forEach(layerConns => {
+                    layerConns.forEach(c => {
+                        if (c.signal > 0) c.signal -= 0.02; // Slower fade
+                        
+                        // HIDE line if start node is not active (cleaner look)
+                        if (c.from.val < 0.05) return;
+
+                        // Calculate visual thickness based on weight
+                        // Range: 1px to 6px
+                        let lineWidth = 1 + (c.weight * 5);
+                        
+                        // Opacity logic
+                        let alpha = 0.05; // Base faint visibility
+
+                        if (c.signal > 0) {
+                            // Active Pulse: Super bright, extra thick
+                            alpha = c.signal;
+                            lineWidth += 2; // Pulse expansion
+                            ctx.shadowBlur = 15 * c.signal;
+                            ctx.shadowColor = "#7dcfff";
+                        } else {
+                            // Resting active path
+                            if (c.from.val > 0.1) {
+                                // Opacity scales with weight too
+                                alpha = 0.1 + (c.weight * 0.4); 
+                            } else {
+                                return; // Don't draw inactive paths at all
+                            }
+                            ctx.shadowBlur = 0;
+                        }
+
+                        ctx.beginPath();
+                        ctx.moveTo(c.from.x, c.from.y);
+                        ctx.lineTo(c.to.x, c.to.y);
+                        
+                        ctx.strokeStyle = `rgba(125, 207, 255, ${alpha})`;
+                        ctx.lineWidth = lineWidth;
+                        ctx.lineCap = "round";
+                        ctx.stroke();
+                        ctx.shadowBlur = 0; // Reset
+                    });
+                });
+
+                // 2. Draw Nodes
+                layers.forEach(l => l.forEach(n => {
+                    n.val += (n.target - n.val) * 0.1;
+                    
+                    if (n.val < 0.05) return;
+
+                    ctx.beginPath();
+                    // Size pulsates slightly with value
+                    ctx.arc(n.x, n.y, 3 + (n.val * 3), 0, Math.PI*2);
+                    
+                    const brightness = n.val;
+                    ctx.fillStyle = `rgba(125, 207, 255, ${brightness})`;
+                    
+                    if (brightness > 0.5) {
+                         ctx.shadowBlur = 20 * brightness;
+                         ctx.shadowColor = "#7dcfff";
+                    } else {
+                        ctx.shadowBlur = 0;
+                    }
+                    
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }));
+
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
     </script>
 </body>
 </html>

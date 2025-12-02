@@ -3,227 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Kanishka Utagikar</title>
-    
-    <!-- Tailwind CSS -->
+    <title>Projects | Kanishka Utagikar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script>
-        // Custom Tailwind Theme Configuration
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'special': ['"Special Elite"', 'cursive'],
-                        'sans': ['"Inter"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Inter"', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#50207A',    // Main background
-                        'accent': '#838CEF',     // Buttons, links, highlights
-                        'text-main': '#D6B9FC',  // Main text
-                        'text-muted': '#a88ddf', // Muted/secondary text
+                        tokyo: {
+                            bg: '#0f0f14',
+                            card: '#24283b',
+                            fg: '#a9b1d6',
+                            accent: '#bb9af7',
+                            cyan: '#7dcfff',
+                            green: '#9ece6a',
+                            orange: '#ff9e64'
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        body { margin: 0; background-color: #0f0f14; overflow-x: hidden; }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .glass-panel { background: rgba(16, 16, 20, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.05); }
+    </style>
 </head>
+<body class="text-tokyo-fg antialiased font-sans">
+    
+    <div id="bg-canvas"></div>
 
-<body class="bg-primary font-sans text-text-main transition-colors duration-300">
-    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
-        
-        <!-- Header -->
-        <header class="text-center py-16">
-            <a href="index.html" class="inline-block">
-                <h1 class="font-special text-5xl md:text-6xl font-bold text-white">Kanishka Utagikar</h1>
-            </a>
-            <p class="mt-4 text-lg text-text-muted">Sophomore IT Student | Machine Learning Enthusiast</p>
+    <nav class="fixed w-full z-50 glass-panel border-b-0 top-0">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-mono text-sm font-bold text-tokyo-cyan">Kanishka Utagikar</a>
+            <div class="space-x-8 hidden md:flex font-mono text-xs">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="projects.html" class="text-white">Projects</a>
+                <a href="contact.html" class="hover:text-white transition">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <header class="mb-16">
+            <h2 class="text-4xl font-bold text-white mb-4">Selected Works</h2>
+            <p class="text-tokyo-fg/70 max-w-2xl">A collection of my top 10 projects involving Generative AI, Bioinformatics, and Full-stack development.</p>
         </header>
 
-        <main>
-             <!-- Projects Section -->
-            <section id="projects">
-                <div class="flex items-center mb-12">
-                    <a href="index.html" class="text-accent hover:text-white transition-colors mr-4"><i data-lucide="arrow-left-circle" class="w-8 h-8"></i></a>
-                    <h2 class="text-3xl font-bold font-special text-white">All Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Project Cards (Restored from your upload) -->
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">AURA: Cosmic Weather</h3>
+                    <i data-lucide="cloud-lightning" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <!-- Project Card: AURA -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">AURA: Cosmic Weather Prediction</h3>
-                        <p class="text-text-muted mb-4 flex-grow">A predictive analytics platform to forecast space weather, quantify financial impact, and provide actionable intelligence to insurers using ML and Monte Carlo simulations.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">ML Forecasting</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Risk Simulation</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Gemini AI</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                            <a href="https://github.com/kanishkautag/Aura-Codeissance2k25" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card: Clause.ai -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">Clause.ai</h3>
-                        <p class="text-text-muted mb-4 flex-grow">AI-powered legal assistant that transforms plain English into precise legal clauses and evaluates contractual risk using a RAG pipeline with live web search.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">RAG</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">NLP</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Firebase</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                            <a href="https://github.com/kanishkautag/Clause.ai" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card: AI Job Assistant -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">AI Job Assistant</h3>
-                        <p class="text-text-muted mb-4 flex-grow">A career co-pilot featuring smart job matching, ATS resume analysis, cover letter generation, and personalized YouTube course recommendations.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Streamlit</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Resume Parsing</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Gemini API</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                            <a href="https://github.com/kanishkautag/AI-Job-Assistant" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card: SkillMorph -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">SkillMorph</h3>
-                        <p class="text-text-muted mb-4 flex-grow">A career recommendation platform combining live job listings, course suggestions, ATS-style resume feedback, and personalized roadmap generation.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Hackathon Project</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Firebase Auth</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                            <a href="https://github.com/kanishkautag/Neural-Ninjas" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card: Research Paper Title Generator -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">Research Paper Title Generator</h3>
-                        <p class="text-text-muted mb-4 flex-grow">Fine-tuned GPT-2 model to generate contextually relevant research paper titles, demonstrating advanced NLP techniques.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">GPT-2</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">NLP</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Generative AI</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                           <a href="https://paper-title-generator.streamlit.app/" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="external-link" class="w-4 h-4"></i> View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card: ProSizeNet -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">ProSizeNet</h3>
-                        <p class="text-text-muted mb-4 flex-grow">A hybrid CNN-Transformer architecture for predicting protein residue sizes, achieving SOTA performance in protein structure prediction.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">CNN</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Transformer</span>
-                             <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Bioinformatics</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                            <a href="https://github.com/kanishkautag/ProSizeNet-Predicting-Protein-Residue-Size-Using-Machine-Learning" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card: Multi-Agent-Med-System -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">Multi-Agent Medical Diagnosis System</h3>
-                        <p class="text-text-muted mb-4 flex-grow">An intelligent medical diagnosis system leveraging AI agents powered by Google's Gemini and CrewAI, with a FastAPI web interface.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Multi-Agent</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">CrewAI</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">FastAPI</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                           <a href="https://github.com/kanishkautag/Multi-Agent-Med-System" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card: Indian Students Heatmap -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">Indian Students Heatmap</h3>
-                        <p class="text-text-muted mb-4 flex-grow">Visualizes the distribution of Indian students across different locations using an interactive heatmap built with Pandas, Folium, and Shiny.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Data Viz</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Folium</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Shiny</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                           <a href="https://kan05.shinyapps.io/indianstudent/" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="external-link" class="w-4 h-4"></i> View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card: Embedding Optimization -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">Embedding Optimization</h3>
-                        <p class="text-text-muted mb-4 flex-grow">Techniques to improve targeted text generation, showcasing advanced methods in NLP and embedding manipulation.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">NLP</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Text Generation</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">PyTorch</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                           <a href="https://github.com/kanishkautag/Embedding-Optimization-for-Targeted-Text-Generation/blob/main/README.md" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card: MLP for Drug Target Classification -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">MLP for Drug Target Classification</h3>
-                        <p class="text-text-muted mb-4 flex-grow">An MLP model to classify drug target statuses using TF-IDF, achieving 95% validation accuracy.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">MLP</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">TF-IDF</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Scikit-learn</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                           <a href="https://github.com/kanishkautag/DJ-ML-EVENT-NEXUS" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card: Mental Therapy Chatbot -->
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                        <h3 class="text-xl font-bold mb-2 text-accent">Mental Therapy Chatbot</h3>
-                        <p class="text-text-muted mb-4 flex-grow">A multi-agent mental wellness assistant with empathetic AI chat, journaling, mood tracking, and relaxing audio integration.</p>
-                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Streamlit</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Multi-Agent LLM</span>
-                            <span class="bg-black/20 text-xs font-medium text-text-main px-2 py-1 rounded-full">Wellness</span>
-                        </div>
-                        <div class="mt-auto flex gap-4">
-                           <a href="https://github.com/kanishkautag/Mental-Therapy-Chatbot-App" target="_blank" class="text-text-muted hover:text-accent font-medium flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i> GitHub</a>
-                        </div>
-                    </div>
-
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Predictive analytics for space weather financial impact. Uses ML and Monte Carlo simulations to aid insurers.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">ML Forecasting</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Gemini AI</span>
                 </div>
-            </section>
-        </main>
+                <a href="https://github.com/kanishkautag/Aura-Codeissance2k25" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
 
-        <!-- Footer -->
-        <footer class="text-center py-12 mt-16 border-t border-white/10">
-            <p class="text-text-muted">© 2025 Kanishka Utagikar | <a href="mailto:kanishka.utagikar@gmail.com" class="hover:text-accent">kanishka.utagikar@gmail.com</a></p>
-        </footer>
-    </div>
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Clause.ai</h3>
+                    <i data-lucide="scale" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Legal assistant transforming plain English to legal clauses with a RAG pipeline and live web search risk evaluation.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">RAG</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Firebase</span>
+                </div>
+                <a href="https://github.com/kanishkautag/Clause.ai" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
 
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">ProSizeNet</h3>
+                    <i data-lucide="dna" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Hybrid CNN-Transformer architecture achieving SOTA performance in predicting protein residue sizes.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">CNN</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">Bioinformatics</span>
+                </div>
+                <a href="https://github.com/kanishkautag/ProSizeNet-Predicting-Protein-Residue-Size-Using-Machine-Learning" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Multi-Agent Diagnosis</h3>
+                    <i data-lucide="activity" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Intelligent medical diagnosis system utilizing CrewAI and Gemini agents behind a FastAPI interface.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">CrewAI</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">FastAPI</span>
+                </div>
+                <a href="https://github.com/kanishkautag/Multi-Agent-Med-System" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">AI Job Assistant</h3>
+                    <i data-lucide="briefcase" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career co-pilot with smart job matching, ATS analysis, and personalized roadmap generation.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">Streamlit</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">ATS Parsing</span>
+                </div>
+                <a href="https://github.com/kanishkautag/AI-Job-Assistant" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">SkillMorph</h3>
+                    <i data-lucide="trending-up" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career recommendation platform combining live job listings and course suggestions with authentication.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Hackathon</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">Firebase</span>
+                </div>
+                <a href="https://github.com/kanishkautag/Neural-Ninjas" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Paper Title Gen</h3>
+                    <i data-lucide="book-open" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Fine-tuned GPT-2 model to generate contextually relevant research paper titles.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">GPT-2</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">NLP</span>
+                </div>
+                <a href="https://paper-title-generator.streamlit.app/" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">Live Demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Student Heatmap</h3>
+                    <i data-lucide="map" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Interactive heatmap visualizing the distribution of Indian students using Pandas and Folium.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Shiny</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">Data Viz</span>
+                </div>
+                <a href="https://kan05.shinyapps.io/indianstudent/" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">Live Demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Therapy Chatbot</h3>
+                    <i data-lucide="heart-handshake" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Multi-agent mental wellness assistant with empathetic AI chat, journaling, and mood tracking.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">Wellness</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">LLM</span>
+                </div>
+                <a href="https://github.com/kanishkautag/Mental-Therapy-Chatbot-App" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+
+            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Drug Target MLP</h3>
+                    <i data-lucide="microscope" class="text-tokyo-fg/50 w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">MLP model to classify drug target statuses using TF-IDF, achieving 95% validation accuracy.</p>
+                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Scikit-learn</span>
+                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">TF-IDF</span>
+                </div>
+                <a href="https://github.com/kanishkautag/DJ-ML-EVENT-NEXUS" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </article>
+        </div>
+    </main>
+
+    <script src="oneko.js"></script>
+    <script>lucide.createIcons();</script>
+    
+    <!-- PASSIVE BACKGROUND SCRIPT -->
     <script>
-        lucide.createIcons();
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 50;
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('bg-canvas').appendChild(renderer.domElement);
+        
+        const particleCount = 700;
+        const positions = new Float32Array(particleCount * 3);
+        const geometry = new THREE.BufferGeometry();
+        for (let i = 0; i < particleCount; i++) {
+            const r = 40 + Math.random() * 20;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
+            positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+            positions[i*3+2] = r * Math.cos(phi);
+        }
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0x555577, size: 0.7, transparent: true, opacity: 0.5 }));
+        scene.add(particles);
+
+        function animateBg() {
+            requestAnimationFrame(animateBg);
+            particles.rotation.y += 0.001;
+            particles.rotation.x += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animateBg();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
-
