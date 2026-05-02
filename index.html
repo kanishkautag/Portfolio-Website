@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kanishka Utagikar — Applied AI @ MENA AI (remote). Designs and ships end-to-end applied AI, retrieval architectures, and high-performance backends. Projects: Clause.ai, Munchy Mumbai, Amazon ML Challenge.">
     <meta name="author" content="Kanishka Utagikar">
-    <meta name="theme-color" content="#0f0f14">
+    <meta name="theme-color" content="#171721">
     <script>
     (function () {
       var k = "portfolio-theme";
@@ -20,7 +20,7 @@
       }
       var m = document.querySelector('meta[name="theme-color"]');
       if (m && r.dataset.theme) {
-        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#0f0f14");
+        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#171721");
       }
     })();
     </script>
@@ -36,6 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
     <link rel="stylesheet" href="site.css">
     <script>
         tailwind.config = {
@@ -46,6 +47,9 @@
                         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
+                        mercury: {
+                            blue: 'rgb(var(--mercury-blue-rgb) / <alpha-value>)',
+                        },
                         tokyo: {
                             bg: 'rgb(var(--tokyo-bg-rgb) / <alpha-value>)',
                             fg: 'rgb(var(--tokyo-fg-rgb) / <alpha-value>)',
@@ -61,22 +65,22 @@
         };
     </script>
 </head>
-<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan/35 selection:text-tokyo-bg font-sans">
+<body class="text-tokyo-fg antialiased selection:bg-mercury-blue/30 selection:text-white font-sans">
 
     <a href="#main" class="skip-link">Skip to content</a>
 
     <div id="bg-canvas" aria-hidden="true"></div>
 
     <header class="fixed w-full z-50 top-0 glass-panel site-nav">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2" aria-label="Primary">
-            <a href="index.html" class="font-mono text-sm font-semibold tracking-tight text-tokyo-cyan hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
+        <nav class="max-w-[1200px] mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2" aria-label="Primary">
+            <a href="index.html" class="text-sm font-medium tracking-tight text-tokyo-fg hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
             <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 flex-1">
-                <div class="hidden md:flex items-center gap-8 font-mono text-xs">
+                <div class="hidden md:flex items-center gap-8 text-xs tracking-wide">
                     <a href="index.html" class="nav-link nav-link-active">Home</a>
                     <a href="projects.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
                     <a href="contact.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
                 </div>
-                <div class="flex md:hidden items-center gap-3 font-mono text-[11px]">
+                <div class="flex md:hidden items-center gap-3 text-[11px] tracking-wide">
                     <a href="projects.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
                     <a href="contact.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
                 </div>
@@ -85,52 +89,54 @@
         </nav>
     </header>
 
-    <main id="main" class="relative z-10 pt-36 sm:pt-44 pb-16 px-4 sm:px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center" aria-label="Home">
-        
-        <!-- Hero -->
-        <div class="max-w-4xl mb-10">
-            <p class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-accent/90 mb-4">Applied AI @ MENA AI</p>
-            <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold tokyo-strong mb-5 tracking-tight leading-[1.05]">
+    <main id="main" aria-label="Home">
+    <!-- DESIGN.md — atmospheric hero + text-driven continuation -->
+    <section class="mercury-hero pt-28 sm:pt-32 md:pt-36 antialiased relative z-[1]" aria-label="Introduction">
+        <div class="mercury-hero-inner px-4 sm:px-6">
+            <p class="mercury-hero-eyebrow text-xs uppercase tracking-[0.28em] mb-4">Applied AI @ MENA AI</p>
+            <h1 class="mercury-hero-title tokyo-strong mb-5 md:mb-6">
                 Kanishka Utagikar
             </h1>
-            <p class="text-lg sm:text-xl text-tokyo-fg/82 font-light leading-relaxed max-w-2xl">
+            <p class="text-lg sm:text-xl font-light leading-relaxed max-w-2xl mercury-hero-sub">
                 <strong class="tokyo-strong font-medium">Applied AI</strong> @ <strong class="tokyo-strong font-medium">MENA AI</strong>
-                <span class="text-tokyo-fg/50"> · remote</span>
+                <span class="mercury-muted"> · remote</span>
             </p>
-            <p class="text-base sm:text-lg text-tokyo-fg/72 mt-4 leading-relaxed max-w-2xl">
+            <p class="text-base sm:text-lg mercury-hero-lead mt-4 leading-relaxed max-w-2xl">
                 I design and ship end-to-end applied AI systems, including retrieval architectures and high-performance backend services.
             </p>
-            <p class="text-sm text-tokyo-fg/48 mt-5 font-mono max-w-xl">
-                <a href="projects.html" class="text-tokyo-cyan hover:text-tokyo-fg transition">Projects</a>
-                <span class="text-tokyo-fg/30 mx-2">·</span>
-                <a href="contact.html" class="text-tokyo-fg/55 hover:text-tokyo-cyan transition">Resume &amp; links</a>
-            </p>
-            <ul class="flex flex-wrap gap-2.5 mt-8 list-none p-0" role="list">
-                <li><a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-mono text-tokyo-fg hover:bg-tokyo-fg/10 hover:border-tokyo-cyan/35 hover:text-tokyo-cyan" aria-label="GitHub profile">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0077b5]/18 border border-[#0077b5]/35 text-sm font-mono text-[#9fdcff] hover:bg-[#0077b5]/28" aria-label="LinkedIn profile">LinkedIn</a></li>
-                <li><a href="https://codolio.com/profile/KanUtag" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-mono hover:bg-tokyo-fg/10 hover:text-tokyo-cyan" aria-label="Codolio competitive programming profile">Codolio</a></li>
-                <li><a href="https://leetcode.com/u/kanishkautag/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#ffa116]/12 border border-[#ffa116]/32 text-sm font-mono text-[#ffc078] hover:bg-[#ffa116]/22" aria-label="LeetCode profile">LeetCode</a></li>
-                <li><a href="https://x.com/KanishkaUt18947" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-mono hover:bg-tokyo-fg/10 hover:text-tokyo-cyan" aria-label="X (Twitter) profile">X</a></li>
-                <li><a href="projects.html" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/40 text-sm font-mono text-tokyo-cyan hover:bg-tokyo-cyan/25">Projects</a></li>
+
+            <div class="flex flex-wrap items-center gap-3 mt-10">
+                <a href="projects.html" class="btn-mercury-primary">View projects</a>
+                <a href="contact.html" class="btn-mercury-ghost">Resume &amp; links</a>
+            </div>
+            <ul class="mercury-hero-social flex flex-wrap gap-2.5 mt-8 list-none p-0" role="list">
+                <li><a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-medium text-tokyo-fg hover:bg-tokyo-fg/10 hover:border-tokyo-cyan/35 hover:text-tokyo-cyan" aria-label="GitHub profile">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0077b5]/18 border border-[#0077b5]/35 text-sm font-medium text-[#9fdcff] hover:bg-[#0077b5]/28" aria-label="LinkedIn profile">LinkedIn</a></li>
+                <li><a href="https://codolio.com/profile/KanUtag" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-medium hover:bg-tokyo-fg/10 hover:text-tokyo-cyan" aria-label="Codolio competitive programming profile">Codolio</a></li>
+                <li><a href="https://leetcode.com/u/kanishkautag/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#ffa116]/12 border border-[#ffa116]/32 text-sm font-medium text-[#ffc078] hover:bg-[#ffa116]/22" aria-label="LeetCode profile">LeetCode</a></li>
+                <li><a href="https://x.com/KanishkaUt18947" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-medium hover:bg-tokyo-fg/10 hover:text-tokyo-cyan" aria-label="X (Twitter) profile">X</a></li>
             </ul>
         </div>
+    </section>
+
+    <div class="relative z-10 pb-24 px-4 sm:px-6 mercury-page space-y-20 lg:space-y-28 mt-12">
 
         <!-- Experience -->
-        <section class="glass-panel rounded-2xl p-6 md:p-8 mb-8 max-w-4xl card-elevated border border-tokyo-fg/10" aria-labelledby="exp-heading">
+        <section class="glass-panel rounded-2xl p-6 md:p-8 mb-0 max-w-4xl card-elevated border border-tokyo-fg/10" aria-labelledby="exp-heading">
             <h2 id="exp-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-accent mb-3">Experience</h2>
             <p class="tokyo-strong text-lg font-semibold tracking-tight">Applied AI Intern — <span class="text-tokyo-fg/75 font-normal">MENA AI</span> <span class="text-sm font-normal text-tokyo-fg/45">(Dubai · remote)</span></p>
             <p class="text-sm text-tokyo-fg/58 mt-3 leading-relaxed max-w-2xl">Shipping <strong class="text-tokyo-fg/85 font-medium">agentic pipelines</strong> end to end: tool-using flows, structured routing, evaluation hooks, and the observability you need when LLM steps are chained in production—not one-off notebook demos.</p>
         </section>
 
         <!-- Education -->
-        <section class="glass-panel rounded-2xl p-5 md:p-6 mb-10 max-w-4xl border border-tokyo-fg/8" aria-labelledby="edu-heading">
+        <section class="glass-panel rounded-2xl p-5 md:p-6 mb-0 max-w-4xl border border-tokyo-fg/8" aria-labelledby="edu-heading">
             <h2 id="edu-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-cyan mb-2">Education</h2>
             <p class="tokyo-strong text-sm font-semibold">B.E. Information Technology — Thadomal Shahani Engineering College, Mumbai</p>
             <p class="text-xs text-tokyo-fg/50 mt-1 font-mono">Third year · CGPA 8.4/10 · expected 2027</p>
         </section>
 
         <!-- Longer technical blurb (not the hero) -->
-        <section class="glass-panel rounded-2xl p-6 md:p-7 mb-10 max-w-4xl border border-tokyo-fg/10" aria-labelledby="focus-heading">
+        <section class="glass-panel rounded-2xl p-6 md:p-7 mb-0 max-w-4xl border border-tokyo-fg/10" aria-labelledby="focus-heading">
             <h2 id="focus-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-fg/55 mb-3">Engineering focus</h2>
             <p class="text-sm sm:text-base text-tokyo-fg/70 leading-relaxed max-w-3xl">
                 I build the systems around models: <span class="text-tokyo-fg/90">agentic pipelines</span> with <span class="text-tokyo-fg/90">LangGraph</span> (routing, reflection, human-in-the-loop), <span class="text-tokyo-fg/90">parent-document RAG</span> on Supabase/pgvector, and <span class="text-tokyo-fg/90">FastAPI + React</span> stacks with OAuth, streaming, and <span class="text-tokyo-fg/90">LangSmith</span>-style tracing—so ideas survive contact with real users and traffic.
@@ -138,57 +144,99 @@
         </section>
 
         <!-- Skills (resume-aligned; compact) -->
-        <section class="mb-14 max-w-4xl" aria-labelledby="skills-heading">
+        <section class="mb-0 max-w-4xl" aria-labelledby="skills-heading">
             <h2 id="skills-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-cyan mb-2">Skills</h2>
             <p class="text-xs text-tokyo-fg/45 mb-5 max-w-2xl">Pulled from my resume—grouped for scanning. Not exhaustive of every side project.</p>
-            <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-xs sm:text-sm text-tokyo-fg/75 leading-relaxed">
+            <div class="grid sm:grid-cols-2 gap-x-8 gap-y-5 text-xs sm:text-sm text-tokyo-fg/75 leading-relaxed">
                 <div>
                     <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Languages</h3>
+                    <div class="skill-icon-row" aria-label="Programming and query languages">
+                        <i class="devicon-python-plain colored" title="Python" aria-hidden="true"></i>
+                        <i class="devicon-java-plain colored" title="Java" aria-hidden="true"></i>
+                        <i class="devicon-cplusplus-plain colored" title="C++" aria-hidden="true"></i>
+                        <i class="devicon-javascript-plain colored" title="JavaScript" aria-hidden="true"></i>
+                        <i class="devicon-typescript-plain colored" title="TypeScript" aria-hidden="true"></i>
+                        <i class="devicon-postgresql-plain colored" title="SQL" aria-hidden="true"></i>
+                    </div>
                     <p>Python, Java, C++, JavaScript, TypeScript, SQL</p>
                 </div>
                 <div>
                     <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Generative AI &amp; NLP</h3>
+                    <div class="skill-icon-row" aria-label="Generative AI and NLP tooling">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/langgraph.svg" width="22" height="22" alt="" title="LangGraph" loading="lazy" decoding="async">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/langchain.svg" width="22" height="22" alt="" title="LangChain" loading="lazy" decoding="async">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/huggingface.svg" width="22" height="22" alt="" title="Hugging Face" loading="lazy" decoding="async">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/langsmith.svg" width="22" height="22" alt="" title="LangSmith" loading="lazy" decoding="async">
+                        <i class="devicon-postgresql-plain colored" title="PostgreSQL / pgvector (RAG stacks)" aria-hidden="true"></i>
+                    </div>
                     <p>LangGraph, RAG pipelines, LangChain, Hugging Face, agentic architectures, LangSmith, vector DBs</p>
                 </div>
                 <div>
                     <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Frameworks &amp; cloud</h3>
+                    <div class="skill-icon-row" aria-label="Frameworks and cloud">
+                        <i class="devicon-fastapi-plain colored" title="FastAPI" aria-hidden="true"></i>
+                        <i class="devicon-react-original colored" title="React" aria-hidden="true"></i>
+                        <i class="devicon-docker-plain colored" title="Docker" aria-hidden="true"></i>
+                        <i class="devicon-flask-original colored" title="Flask" aria-hidden="true"></i>
+                        <i class="devicon-streamlit-plain colored" title="Streamlit" aria-hidden="true"></i>
+                        <i class="devicon-git-plain colored" title="Git" aria-hidden="true"></i>
+                        <i class="devicon-amazonwebservices-plain colored" title="AWS" aria-hidden="true"></i>
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/temporal.svg" width="22" height="22" alt="" title="Temporal" loading="lazy" decoding="async">
+                    </div>
                     <p>FastAPI, React, Docker, Flask, Streamlit, Git, AWS, <span class="text-tokyo-cyan/90">Temporal</span></p>
                 </div>
                 <div>
                     <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">ML &amp; data</h3>
+                    <div class="skill-icon-row" aria-label="ML frameworks">
+                        <i class="devicon-pytorch-original colored" title="PyTorch" aria-hidden="true"></i>
+                        <i class="devicon-tensorflow-original colored" title="TensorFlow" aria-hidden="true"></i>
+                        <i class="devicon-scikitlearn-original colored" title="Scikit-learn" aria-hidden="true"></i>
+                        <i class="devicon-pandas-original colored" title="Pandas" aria-hidden="true"></i>
+                    </div>
                     <p>PyTorch, TensorFlow, Scikit-learn, Pandas</p>
                 </div>
                 <div class="sm:col-span-2">
                     <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Deployment</h3>
+                    <div class="skill-icon-row" aria-label="Deployment platforms">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/render.svg" width="22" height="22" alt="" title="Render" loading="lazy" decoding="async">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/railway.svg" width="22" height="22" alt="" title="Railway" loading="lazy" decoding="async">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/huggingface.svg" width="22" height="22" alt="" title="Hugging Face Spaces" loading="lazy" decoding="async">
+                        <img class="skill-si skill-si-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg" width="22" height="22" alt="" title="Vercel" loading="lazy" decoding="async">
+                    </div>
                     <p>Render · Railway · Hugging Face Spaces · Vercel</p>
                 </div>
                 <div class="sm:col-span-2">
                     <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Databases</h3>
+                    <div class="skill-icon-row" aria-label="Databases">
+                        <i class="devicon-supabase-original colored" title="Supabase" aria-hidden="true"></i>
+                        <i class="devicon-postgresql-plain colored" title="PostgreSQL &amp; pgvector" aria-hidden="true"></i>
+                        <i class="devicon-mongodb-plain colored" title="MongoDB" aria-hidden="true"></i>
+                    </div>
                     <p>Supabase · PostgreSQL · MongoDB · pgvector (vector search on Postgres)</p>
                 </div>
             </div>
         </section>
 
         <!-- Achievements -->
-        <section id="achievements" class="mb-6" aria-labelledby="ach-heading">
+        <section id="achievements" class="mb-0" aria-labelledby="ach-heading">
             <h2 id="ach-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-fg/55 mb-4">Achievements</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-5">
-            <a href="https://github.com/kanishkautag/AMAZON_ML_SOLUTION" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+            <a href="https://github.com/kanishkautag/AMAZON_ML_SOLUTION" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl mercury-card card-elevated block group border border-tokyo-fg/10">
                 <div class="text-tokyo-cyan mb-1.5 text-[10px] font-mono uppercase tracking-wider">Amazon ML Challenge &apos;25</div>
                 <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-cyan transition">Top 200</div>
                 <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">Rank 183 / 20,000+ teams</div>
             </a>
-            <a href="https://github.com/kanishkautag/NFC4_THE_OVERFLOWS" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+            <a href="https://github.com/kanishkautag/NFC4_THE_OVERFLOWS" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl mercury-card card-elevated block group border border-tokyo-fg/10">
                 <div class="text-tokyo-accent mb-1.5 text-[10px] font-mono uppercase tracking-wider">Need For Code &apos;25</div>
                 <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-accent transition">Runner up</div>
                 <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">AI/ML · 400+ teams registered</div>
             </a>
-            <a href="https://codeforces.com/profile/Prophet05" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+            <a href="https://codeforces.com/profile/Prophet05" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl mercury-card card-elevated block group border border-tokyo-fg/10">
                 <div class="text-tokyo-green mb-1.5 text-[10px] font-mono uppercase tracking-wider">Codeforces</div>
                 <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-green transition">1261</div>
                 <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">Pupil · @Prophet05</div>
             </a>
-            <a href="https://codolio.com/profile/KanUtag" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+            <a href="https://codolio.com/profile/KanUtag" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl mercury-card card-elevated block group border border-tokyo-fg/10">
                 <div class="text-tokyo-fg/45 mb-1.5 text-[10px] font-mono uppercase tracking-wider">Codolio</div>
                 <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-accent transition">Profile</div>
                 <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">Contests &amp; sheets</div>
@@ -200,21 +248,23 @@
         <div class="h-8" aria-hidden="true"></div>
 
         <!-- Neural demo -->
-        <section class="w-full max-w-3xl mx-auto mb-12 glass-panel rounded-2xl p-6 sm:p-8 border border-tokyo-cyan/15" aria-labelledby="nn-heading">
+        <section class="w-full max-w-3xl mx-auto mb-0 glass-panel rounded-2xl p-6 sm:p-8 border border-tokyo-fg/15" aria-labelledby="nn-heading">
             <div class="flex flex-col items-center text-center mb-6">
-                <h2 id="nn-heading" class="font-mono text-lg sm:text-xl font-bold tokyo-strong glow-text mb-2 tracking-tight">Neural inference demo</h2>
+                <h2 id="nn-heading" class="text-lg sm:text-xl font-semibold tokyo-strong glow-text mb-2 tracking-tight">Neural inference demo</h2>
                 <p class="text-sm text-tokyo-fg/55 max-w-md">Pick a digit to animate a toy network (visualization only, not a trained model).</p>
                 <span class="font-mono text-[11px] text-tokyo-fg/45 mt-3 tabular-nums" id="status-text" aria-live="polite">WAITING FOR INPUT…</span>
             </div>
             
             <div id="input-buttons" class="flex gap-2 mb-4 justify-center"></div>
             
-            <div class="relative rounded-xl overflow-hidden ring-1 ring-tokyo-fg/10">
-                <canvas id="nn-canvas" width="700" height="250" role="img" aria-label="Animated neural network diagram" class="w-full bg-tokyo-ink border border-tokyo-cyan/20 shadow-[0_0_32px_rgba(0,229,255,0.06)]"></canvas>
+            <div class="relative rounded-xl overflow-hidden ring-1 ring-tokyo-fg/12">
+                <canvas id="nn-canvas" width="700" height="250" role="img" aria-label="Animated neural network diagram" class="w-full bg-tokyo-ink border border-tokyo-fg/20"></canvas>
             </div>
             
             <div id="prediction-bars" class="flex items-end gap-[2px] h-4 mt-2 w-full opacity-80" aria-hidden="true"></div>
         </section>
+
+    </div>
 
     </main>
 

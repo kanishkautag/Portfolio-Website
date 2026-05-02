@@ -1,21 +1,42 @@
 /*
-  Palettes — Tokyo Night (dark) & paper/indigo daylight (light)
-  Dark (Tokyo-ish): Deep base #0f0f14, fg #c0caf5, cyan accent #7dcfff, violet #bb9af7, green #9ece6a
-  Light: Cool paper #f1f5f9, slate text #334155, sky accent #0369a1 / #0ea5e9, indigo violet #6366f1, emerald accent #059669
+  Light: Tokyo/paper palette (unchanged intent).
+  Dark: Mercury command-center (DESIGN.md) — abyss/slate surfaces, mercury blue ONLY for primary CTAs, ghost blue for hovers/subtle UI.
 */
+
+:root {
+  --mercury-blue-rgb: 82 102 235;
+  --color-mercury-blue: #5266eb;
+  --color-ghost-blue: #cdddff;
+  --color-deep-space: #171721;
+  --color-midnight-slate: #1e1e2a;
+  --color-graphite: #272735;
+  --color-lead: #70707d;
+  --color-starlight: #ededf3;
+  --color-silver: #c3c3cc;
+  --color-pure-white: #ffffff;
+
+  --font-arcadia: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --text-display: clamp(2.75rem, 6vw, 4.0625rem);
+  --leading-display: 1.1;
+  --tracking-display: 0.04em;
+
+  --page-max-width: 1200px;
+}
+
 [data-theme="dark"] {
-  --tokyo-bg-rgb: 15 15 20;
-  --tokyo-fg-rgb: 192 202 245;
-  --tokyo-ink-rgb: 22 23 34;
-  --tokyo-chip-rgb: 26 27 38;
-  --tokyo-cyan-rgb: 125 207 255;
-  --tokyo-accent-rgb: 187 154 247;
-  --tokyo-green-rgb: 158 206 106;
-  --glass-fill: rgba(20, 20, 26, 0.55);
-  --glass-fill-strong: rgba(20, 20, 26, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --nav-border: rgba(125, 207, 255, 0.12);
-  --site-footer-fill: rgba(0, 0, 0, 0.2);
+  --tokyo-bg-rgb: 23 23 33; /* Deep Space */
+  --tokyo-fg-rgb: 237 237 243; /* Starlight */
+  --tokyo-ink-rgb: 39 39 53; /* Graphite (surfaces / canvas fill) */
+  --tokyo-chip-rgb: 39 39 53;
+  --tokyo-cyan-rgb: 205 221 255; /* Ghost blue — links, focus, non-CTA emphasis */
+  --tokyo-accent-rgb: 195 195 204; /* Silver */
+  --tokyo-green-rgb: 160 168 190; /* Muted for stats; no saturated green */
+  --glass-fill: rgba(30, 30, 42, 0.92);
+  --glass-fill-strong: rgba(30, 30, 42, 0.97);
+  --glass-border: rgba(112, 112, 125, 0.35);
+  --nav-border: rgba(112, 112, 125, 0.25);
+  --site-footer-fill: rgba(23, 23, 33, 0.92);
 }
 
 [data-theme="light"] {
@@ -49,10 +70,18 @@ body {
   min-height: 100vh;
   background-color: rgb(var(--tokyo-bg-rgb));
   background-image:
-    radial-gradient(ellipse 80% 55% at 50% -20%, rgb(var(--tokyo-cyan-rgb) / 0.06), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgb(var(--tokyo-accent-rgb) / 0.06), transparent 45%);
+    radial-gradient(ellipse 80% 55% at 50% -20%, rgb(var(--tokyo-cyan-rgb) / 0.04), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgb(var(--tokyo-accent-rgb) / 0.04), transparent 45%);
   color: rgb(var(--tokyo-fg-rgb));
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-arcadia);
+  font-feature-settings: "ss01" on;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] body {
+  background-image: none;
+  font-weight: 400;
 }
 
 #bg-canvas {
@@ -62,11 +91,15 @@ body {
   pointer-events: none;
 }
 
+[data-theme="dark"] #bg-canvas {
+  opacity: 0.12;
+}
+
 #bg-canvas canvas {
   display: block;
 }
 
-/* Frosted Tokyo panels */
+/* Surfaces — Mercury dark: flat layers, no shadow elevation */
 .glass-panel {
   position: relative;
   z-index: 1;
@@ -79,15 +112,25 @@ body {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   border-radius: 1rem;
-  box-shadow:
-    inset 1px 1px 0 rgb(255 255 255 / 0.06),
-    0 12px 40px rgb(0 0 0 / 0.15);
+}
+
+[data-theme="dark"] .glass-panel {
+  border-radius: 4px;
+  box-shadow: none;
+  background: var(--color-midnight-slate);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 [data-theme="light"] .glass-panel {
   box-shadow:
     inset 1px 1px 0 rgb(255 255 255 / 0.9),
     0 10px 28px rgb(15 23 42 / 0.08);
+}
+
+[data-theme="dark"] .site-nav.glass-panel {
+  background: rgba(23, 23, 33, 0.85);
+  border-bottom-color: rgba(112, 112, 125, 0.3);
 }
 
 .site-nav {
@@ -129,17 +172,32 @@ body {
   outline: none;
 }
 
+[data-theme="dark"] .theme-toggle {
+  border-radius: 2rem;
+  background: rgb(205 221 255 / 0.12);
+  border-color: rgb(112 112 125 / 0.4);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: rgb(205 221 255 / 0.2);
+}
+
 [data-theme="light"] .theme-toggle:hover {
   background: rgb(var(--tokyo-cyan-rgb) / 0.12);
 }
 
 .card-elevated {
   transition:
-    transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 180ms ease;
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
-.card-elevated:hover {
+[data-theme="dark"] .card-elevated:hover {
+  background-color: var(--color-graphite);
+  border-color: rgba(112, 112, 125, 0.55);
+}
+
+[data-theme="light"] .card-elevated:hover {
   transform: translateY(-4px);
   box-shadow:
     inset 1px 1px 0 rgb(255 255 255 / 0.08),
@@ -153,21 +211,29 @@ button:focus-visible {
 }
 
 .link-pill {
-  border-radius: 0.65rem !important;
+  border-radius: 2rem !important;
   transition:
-    transform 140ms cubic-bezier(0.4, 0, 0.2, 1),
     background 140ms ease,
     border-color 140ms ease,
-    box-shadow 140ms ease;
+    color 140ms ease;
   border-style: solid;
   border-width: 1px;
 }
 
 [data-theme="dark"] .link-pill {
+  box-shadow: none;
+}
+
+[data-theme="dark"] .link-pill:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+[data-theme="light"] .link-pill {
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.2);
 }
 
-.link-pill:hover {
+[data-theme="light"] .link-pill:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgb(0 0 0 / 0.18);
 }
@@ -175,6 +241,11 @@ button:focus-visible {
 .chip-muted {
   background-color: rgb(var(--tokyo-chip-rgb));
   border: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .chip-muted {
+  border-radius: 4px;
+  background-color: rgba(39, 39, 53, 0.6);
 }
 
 .nn-digit-btn {
@@ -194,7 +265,7 @@ button:focus-visible {
 
 .nav-link-active {
   color: rgb(var(--tokyo-cyan-rgb));
-  text-shadow: 0 0 18px rgb(var(--tokyo-cyan-rgb) / 0.35);
+  text-shadow: none;
 }
 
 [data-theme="light"] .nav-link-active {
@@ -212,7 +283,7 @@ button:focus-visible {
   left: 0;
   bottom: 0;
   width: 0;
-  height: 2px;
+  height: 1px;
   background: rgb(var(--tokyo-cyan-rgb));
   transition: width 140ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -244,28 +315,389 @@ button:focus-visible {
   left: 1rem;
   top: 1rem;
   z-index: 9999;
-  background: rgb(var(--tokyo-cyan-rgb));
-  color: rgb(var(--tokyo-bg-rgb));
+  background: var(--color-mercury-blue);
+  color: var(--color-pure-white);
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 0.8125rem;
-  font-weight: 700;
-  border-radius: 0.65rem;
+  font-weight: 600;
+  border-radius: 2rem;
   border: none;
 }
 
 .glow-text {
-  text-shadow: 0 0 14px rgb(var(--tokyo-cyan-rgb) / 0.42);
+  text-shadow: none;
+}
+
+[data-theme="dark"] .glow-text {
+  text-shadow: 0 0 20px rgb(var(--tokyo-cyan-rgb) / 0.28);
 }
 
 [data-theme="light"] .glow-text {
   text-shadow: none;
 }
 
-/* Headlines & strong contrasts (readable in both modes) */
 .tokyo-strong {
   color: #f8fafc;
 }
 
+[data-theme="dark"] .tokyo-strong {
+  color: var(--color-starlight);
+}
+
 [data-theme="light"] .tokyo-strong {
   color: #0f172a;
+}
+
+/* DESIGN.md — atmospheric hero */
+.mercury-hero {
+  position: relative;
+  margin: 0;
+  padding-bottom: 4rem;
+  min-height: min(92vh, 920px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--color-starlight);
+  background-color: var(--color-deep-space);
+  background-image:
+    linear-gradient(to top, var(--color-deep-space) 0%, rgba(23, 23, 33, 0.82) 38%, rgba(23, 23, 33, 0.35) 100%),
+    url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=85");
+  background-size: cover;
+  background-position: center 40%;
+}
+
+[data-theme="light"] .mercury-hero {
+  color: rgb(254 252 246 / 0.95);
+  /* Sunset magenta + blue-hour sky stack — loud but bottom-scrim keeps type legible */
+  background-color: #1a1f38;
+  background-image:
+    linear-gradient(
+      to top,
+      rgba(14, 18, 40, 0.94) 0%,
+      rgba(38, 22, 58, 0.58) 24%,
+      rgba(140, 50, 120, 0.16) 46%,
+      rgba(255, 150, 100, 0.06) 62%,
+      transparent 78%
+    ),
+    linear-gradient(
+      188deg,
+      rgba(255, 70, 150, 0.52) 0%,
+      rgba(235, 60, 220, 0.34) 16%,
+      rgba(155, 95, 255, 0.26) 32%,
+      rgba(70, 120, 235, 0.12) 50%,
+      transparent 68%
+    ),
+    linear-gradient(
+      22deg,
+      rgba(55, 95, 200, 0.28) 0%,
+      rgba(130, 180, 255, 0.14) 28%,
+      transparent 54%
+    ),
+    radial-gradient(
+      ellipse 110% 82% at 52% -14%,
+      rgba(215, 235, 255, 0.62),
+      rgba(255, 210, 195, 0.38) 28%,
+      rgba(245, 120, 255, 0.2) 48%,
+      rgba(110, 90, 230, 0.12) 62%,
+      transparent 76%
+    ),
+    radial-gradient(ellipse 65% 50% at 4% 18%, rgba(255, 55, 180, 0.36), transparent 56%),
+    radial-gradient(ellipse 55% 42% at 96% 10%, rgba(70, 130, 255, 0.42), transparent 52%),
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(40, 60, 140, 0.18), transparent 48%),
+    url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=85");
+  background-size: cover;
+  background-position: center 41%;
+}
+
+/* Projects page — same mountain + sunset paint as home hero (fixed while scrolling) */
+[data-theme="light"] body.projects-page {
+  background-color: #1a1f38;
+  background-image:
+    linear-gradient(
+      to top,
+      rgba(14, 18, 40, 0.94) 0%,
+      rgba(38, 22, 58, 0.58) 24%,
+      rgba(140, 50, 120, 0.16) 46%,
+      rgba(255, 150, 100, 0.06) 62%,
+      transparent 78%
+    ),
+    linear-gradient(
+      188deg,
+      rgba(255, 70, 150, 0.52) 0%,
+      rgba(235, 60, 220, 0.34) 16%,
+      rgba(155, 95, 255, 0.26) 32%,
+      rgba(70, 120, 235, 0.12) 50%,
+      transparent 68%
+    ),
+    linear-gradient(
+      22deg,
+      rgba(55, 95, 200, 0.28) 0%,
+      rgba(130, 180, 255, 0.14) 28%,
+      transparent 54%
+    ),
+    radial-gradient(
+      ellipse 110% 82% at 52% -14%,
+      rgba(215, 235, 255, 0.62),
+      rgba(255, 210, 195, 0.38) 28%,
+      rgba(245, 120, 255, 0.2) 48%,
+      rgba(110, 90, 230, 0.12) 62%,
+      transparent 76%
+    ),
+    radial-gradient(ellipse 65% 50% at 4% 18%, rgba(255, 55, 180, 0.36), transparent 56%),
+    radial-gradient(ellipse 55% 42% at 96% 10%, rgba(70, 130, 255, 0.42), transparent 52%),
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(40, 60, 140, 0.18), transparent 48%),
+    url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=85");
+  background-size: cover;
+  background-position: center 41%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+[data-theme="dark"] body.projects-page {
+  background-color: var(--color-deep-space);
+  background-image:
+    linear-gradient(to top, var(--color-deep-space) 0%, rgba(23, 23, 33, 0.82) 38%, rgba(23, 23, 33, 0.35) 100%),
+    url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=85");
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.mercury-hero-inner {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+.mercury-hero-eyebrow {
+  color: rgba(237, 237, 243, 0.55);
+}
+
+[data-theme="light"] .mercury-hero-eyebrow {
+  color: rgb(254 243 235 / 0.72);
+}
+
+.mercury-hero-title {
+  font-weight: 300;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-display);
+  font-size: var(--text-display);
+}
+
+[data-theme="light"] .mercury-hero-title {
+  letter-spacing: 0.02em;
+  color: #fef8ff;
+  text-shadow:
+    0 2px 36px rgb(25 18 52 / 0.55),
+    0 0 48px rgb(120 40 140 / 0.2),
+    0 1px 3px rgb(12 20 48 / 0.4);
+}
+
+[data-theme="light"] .mercury-hero .tokyo-strong {
+  color: #fff8fc;
+  text-shadow:
+    0 1px 14px rgb(25 18 48 / 0.4),
+    0 0 24px rgb(100 50 160 / 0.18);
+}
+
+.mercury-hero-sub strong {
+  font-weight: 500;
+}
+
+.mercury-hero-sub {
+  color: rgba(237, 237, 243, 0.88);
+}
+
+[data-theme="light"] .mercury-hero-sub {
+  color: rgb(255 251 252 / 0.94);
+  text-shadow:
+    0 1px 14px rgb(25 22 52 / 0.38),
+    0 0 20px rgb(60 90 180 / 0.12);
+}
+
+.mercury-muted {
+  color: rgba(237, 237, 243, 0.45);
+}
+
+[data-theme="light"] .mercury-muted {
+  color: rgb(255 246 238 / 0.55);
+}
+
+.mercury-hero-lead {
+  color: rgba(237, 237, 243, 0.72);
+}
+
+[data-theme="light"] .mercury-hero-lead {
+  color: rgb(252 249 255 / 0.9);
+  text-shadow:
+    0 1px 14px rgb(22 20 46 / 0.36),
+    0 0 18px rgb(80 60 160 / 0.1);
+}
+
+[data-theme="dark"] .mercury-hero-social .link-pill {
+  background: transparent !important;
+  border-color: rgba(112, 112, 125, 0.45) !important;
+  color: var(--color-starlight) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .mercury-hero-social .link-pill:hover {
+  background: var(--color-graphite) !important;
+  border-color: rgba(205, 221, 255, 0.28) !important;
+  color: var(--color-starlight) !important;
+}
+
+[data-theme="light"] .mercury-hero-social .link-pill {
+  background: rgb(255 255 255 / 0.12) !important;
+  border-color: rgb(255 255 255 / 0.32) !important;
+  color: #fffbf8 !important;
+  box-shadow: 0 4px 18px rgb(30 18 28 / 0.18);
+}
+
+[data-theme="light"] .mercury-hero-social .link-pill:hover {
+  background: rgb(255 255 255 / 0.26) !important;
+  border-color: rgb(255 255 255 / 0.48) !important;
+  color: #fff !important;
+}
+
+.mercury-page {
+  max-width: var(--page-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Primary CTA — Mercury blue only here */
+.btn-mercury-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-pure-white);
+  background-color: var(--color-mercury-blue);
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: background-color 140ms ease, filter 140ms ease;
+}
+
+.btn-mercury-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-mercury-primary:focus-visible {
+  outline: 2px solid rgb(var(--tokyo-cyan-rgb));
+  outline-offset: 3px;
+}
+
+/* Header / secondary pill */
+.btn-mercury-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.15rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-starlight);
+  background: rgba(205, 221, 255, 0.2);
+  border: 1px solid rgba(112, 112, 125, 0.35);
+  border-radius: 2.5rem;
+  text-decoration: none;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+[data-theme="light"] .btn-mercury-ghost {
+  color: rgb(var(--tokyo-fg-rgb));
+  background: rgba(3, 105, 161, 0.1);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.btn-mercury-ghost:hover {
+  background: rgba(205, 221, 255, 0.28);
+  border-color: rgba(112, 112, 125, 0.5);
+}
+
+[data-theme="light"] .btn-mercury-ghost:hover {
+  background: rgba(3, 105, 161, 0.14);
+  border-color: rgba(15, 23, 42, 0.2);
+}
+
+/* Résumé skills — Devicon + Simple Icons */
+.skill-icon-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.skill-icon-row i[class*="devicon"] {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.skill-si {
+  width: 1.45rem;
+  height: 1.45rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .skill-si-mono {
+  filter: invert(1) brightness(1.06);
+}
+
+[data-theme="light"] .skill-si-mono {
+  opacity: 0.88;
+}
+
+/* Mercury: achievement & project tiles — sharp cards on dark */
+[data-theme="dark"] .mercury-card {
+  border-radius: 0 !important;
+}
+
+[data-theme="dark"] #nn-canvas {
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .site-footer {
+  color: var(--color-silver);
+}
+
+[data-theme="dark"] .site-footer p {
+  color: rgba(195, 195, 204, 0.85) !important;
+}
+
+[data-theme="dark"] .site-footer nav a {
+  color: rgba(237, 237, 243, 0.65) !important;
+}
+
+[data-theme="dark"] .site-footer nav a:hover {
+  color: var(--color-starlight) !important;
+}
+
+[data-theme="dark"] .shadow-2xl {
+  box-shadow: none;
+}
+
+[data-theme="dark"] .mercury-contact-card {
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .mercury-contact-social .link-pill {
+  background: transparent !important;
+  border-color: rgba(112, 112, 125, 0.45) !important;
+  color: var(--color-starlight) !important;
+}
+
+[data-theme="dark"] .mercury-contact-social .link-pill:hover {
+  background: var(--color-graphite) !important;
+  border-color: rgba(205, 221, 255, 0.25) !important;
 }

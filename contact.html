@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Kanishka Utagikar — resume, email, GitHub, LinkedIn, Codolio, LeetCode.">
-    <meta name="theme-color" content="#0f0f14">
+    <meta name="theme-color" content="#171721">
     <script>
     (function () {
       var k = "portfolio-theme";
@@ -19,7 +19,7 @@
       }
       var m = document.querySelector('meta[name="theme-color"]');
       if (m && r.dataset.theme) {
-        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#0f0f14");
+        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#171721");
       }
     })();
     </script>
@@ -41,6 +41,9 @@
                         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
+                        mercury: {
+                            blue: 'rgb(var(--mercury-blue-rgb) / <alpha-value>)',
+                        },
                         tokyo: {
                             bg: 'rgb(var(--tokyo-bg-rgb) / <alpha-value>)',
                             fg: 'rgb(var(--tokyo-fg-rgb) / <alpha-value>)',
@@ -56,7 +59,7 @@
         };
     </script>
 </head>
-<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan/35 selection:text-tokyo-bg min-h-screen flex flex-col font-sans">
+<body class="text-tokyo-fg antialiased selection:bg-mercury-blue/30 selection:text-white min-h-screen flex flex-col font-sans">
 
     <a href="#main" class="skip-link">Skip to content</a>
 
@@ -64,14 +67,14 @@
 
     <header class="fixed w-full z-50 top-0 glass-panel site-nav">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2" aria-label="Primary">
-            <a href="index.html" class="font-mono text-sm font-semibold tracking-tight text-tokyo-cyan hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
+            <a href="index.html" class="text-sm font-medium tracking-tight text-tokyo-fg hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
             <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 flex-1">
-                <div class="hidden md:flex items-center gap-8 font-mono text-xs">
+                <div class="hidden md:flex items-center gap-8 text-xs tracking-wide">
                     <a href="index.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
                     <a href="projects.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
                     <a href="contact.html" class="nav-link nav-link-active">Connect</a>
                 </div>
-                <div class="flex md:hidden items-center gap-3 font-mono text-[11px]">
+                <div class="flex md:hidden items-center gap-3 text-[11px] tracking-wide">
                     <a href="index.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
                     <a href="projects.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
                 </div>
@@ -81,25 +84,25 @@
     </header>
 
     <main id="main" class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 py-28 sm:py-32 w-full">
-        <div class="glass-panel p-8 sm:p-10 rounded-2xl shadow-2xl text-center max-w-md w-full card-elevated border border-tokyo-fg/12">
-            <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-tokyo-accent mb-3">Say hello</p>
-            <h1 class="text-2xl sm:text-3xl font-bold tokyo-strong mb-2 tracking-tight">Connect</h1>
+        <div class="glass-panel mercury-contact-card p-8 sm:p-10 rounded-2xl shadow-2xl text-center max-w-md w-full card-elevated border border-tokyo-fg/12">
+            <p class="text-[11px] uppercase tracking-[0.2em] text-tokyo-fg/55 mb-3">Say hello</p>
+            <h1 class="text-2xl sm:text-3xl font-semibold tokyo-strong mb-2 tracking-tight">Connect</h1>
             <p class="text-sm text-tokyo-fg/55 mb-8 leading-relaxed">Backend · applied AI · internships and collaborations.</p>
 
             <div class="grid gap-2.5">
-                <a href="https://drive.google.com/file/d/1OegPSe6gGOmWJiMjJxjoSyT6oF0qgHTn/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="link-pill flex items-center justify-center gap-2 bg-tokyo-cyan text-slate-900 font-semibold py-3 rounded-xl hover:bg-tokyo-fg/15 transition-all text-sm">
+                <a href="https://drive.google.com/file/d/1OegPSe6gGOmWJiMjJxjoSyT6oF0qgHTn/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-mercury-primary w-full py-3 text-sm">
                     <i data-lucide="file-text" class="w-4 h-4 shrink-0" aria-hidden="true"></i> Resume (PDF)
                 </a>
 
-                <a href="projects.html" class="link-pill flex items-center justify-center gap-2 bg-tokyo-accent/15 border border-tokyo-accent/35 text-tokyo-accent py-3 rounded-xl hover:bg-tokyo-accent/25 transition-all text-sm font-mono">
+                <a href="projects.html" class="btn-mercury-ghost w-full py-3 text-sm">
                     <i data-lucide="layout-grid" class="w-4 h-4 shrink-0" aria-hidden="true"></i> Projects &amp; demos
                 </a>
 
-                <a href="mailto:kanishka.utagikar@gmail.com" class="link-pill flex items-center justify-center gap-2 bg-tokyo-fg/5 border border-tokyo-fg/10 tokyo-strong font-mono py-3 rounded-xl hover:bg-tokyo-fg/10 transition-all text-sm break-all">
+                <a href="mailto:kanishka.utagikar@gmail.com" class="link-pill flex items-center justify-center gap-2 bg-tokyo-fg/5 border border-tokyo-fg/10 tokyo-strong py-3 rounded-xl hover:bg-tokyo-fg/10 transition-all text-sm break-all">
                     <i data-lucide="mail" class="w-4 h-4 shrink-0" aria-hidden="true"></i> kanishka.utagikar@gmail.com
                 </a>
 
-                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                <div class="mercury-contact-social grid grid-cols-2 gap-2.5 pt-1">
                     <a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" rel="noopener noreferrer" class="link-pill flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0077b5]/18 text-[#9fdcff] border border-[#0077b5]/35 hover:bg-[#0077b5]/30 text-sm font-medium">
                         <i data-lucide="linkedin" class="w-4 h-4 shrink-0" aria-hidden="true"></i> LinkedIn
                     </a>

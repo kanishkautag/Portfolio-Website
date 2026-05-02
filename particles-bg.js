@@ -1,8 +1,8 @@
 (function () {
   function tuneParticles(material, domElement) {
     var light = document.documentElement.dataset.theme === "light";
-    material.opacity = light ? 0.22 : 0.42;
-    material.color.setHex(light ? 0xaabbee : 0x555577);
+    material.opacity = light ? 0.22 : 0.12;
+    material.color.setHex(light ? 0xaabbee : 0x62667a);
     if (domElement) domElement.style.opacity = light ? "0.9" : "1";
   }
 

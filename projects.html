@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projects by Kanishka Utagikar — Clause.ai, Munchy Mumbai, Amazon ML Challenge, RAG, and more with live demos and source.">
-    <meta name="theme-color" content="#0f0f14">
+    <meta name="theme-color" content="#171721">
     <script>
     (function () {
       var k = "portfolio-theme";
@@ -19,7 +19,7 @@
       }
       var m = document.querySelector('meta[name="theme-color"]');
       if (m && r.dataset.theme) {
-        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#0f0f14");
+        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#171721");
       }
     })();
     </script>
@@ -42,6 +42,9 @@
                         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
+                        mercury: {
+                            blue: 'rgb(var(--mercury-blue-rgb) / <alpha-value>)',
+                        },
                         tokyo: {
                             bg: 'rgb(var(--tokyo-bg-rgb) / <alpha-value>)',
                             fg: 'rgb(var(--tokyo-fg-rgb) / <alpha-value>)',
@@ -60,7 +63,7 @@
         .proj-tag { border: 1px solid var(--glass-border); }
     </style>
 </head>
-<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan/35 selection:text-tokyo-bg font-sans">
+<body class="projects-page text-tokyo-fg antialiased selection:bg-mercury-blue/30 selection:text-white font-sans">
 
     <a href="#main" class="skip-link">Skip to content</a>
 
@@ -68,14 +71,14 @@
 
     <header class="fixed w-full z-50 top-0 glass-panel site-nav">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2" aria-label="Primary">
-            <a href="index.html" class="font-mono text-sm font-semibold tracking-tight text-tokyo-cyan hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
+            <a href="index.html" class="text-sm font-medium tracking-tight text-tokyo-fg hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
             <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 flex-1">
-                <div class="hidden md:flex items-center gap-8 font-mono text-xs">
+                <div class="hidden md:flex items-center gap-8 text-xs tracking-wide">
                     <a href="index.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
                     <a href="projects.html" class="nav-link nav-link-active">Projects</a>
                     <a href="contact.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
                 </div>
-                <div class="flex md:hidden items-center gap-3 font-mono text-[11px]">
+                <div class="flex md:hidden items-center gap-3 text-[11px] tracking-wide">
                     <a href="index.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
                     <a href="contact.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
                 </div>
@@ -84,24 +87,24 @@
         </nav>
     </header>
 
-    <main id="main" class="pt-32 sm:pt-36 pb-16 px-4 sm:px-6 max-w-7xl mx-auto">
+    <main id="main" class="pt-32 sm:pt-36 pb-24 px-4 sm:px-6 mercury-page mx-auto relative z-10">
         <header class="mb-12 max-w-3xl">
             <h1 class="text-3xl sm:text-4xl font-bold tokyo-strong mb-4 tracking-tight">Projects</h1>
-            <p class="text-tokyo-fg/65 leading-relaxed">This is the long-form version of my work—systems, metrics, and links in one place. Featured builds first; older research and hackathon repos underneath. All public code lives on <a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="text-tokyo-cyan hover:text-tokyo-cyan underline decoration-tokyo-cyan/40 underline-offset-2">GitHub</a>.</p>
+            <p class="text-tokyo-fg/65 leading-relaxed">This is the long-form version of my work—systems, metrics, and links in one place. Featured builds first; older research and hackathon repos underneath. All public code lives on <a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="text-tokyo-fg underline decoration-[#70707d]/50 underline-offset-2 hover:decoration-tokyo-cyan/40">GitHub</a>.</p>
         </header>
 
         <section aria-labelledby="feat-heading">
             <h2 id="feat-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-accent mb-6">Featured</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-20">
-            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-cyan/15">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/12">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Clause.ai</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Clause.ai</h3>
                     <i data-lucide="scale" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
                 </div>
                 <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Parent-document RAG</strong> on Supabase pgvector—searchable chunks plus full-document context so clause generation stays faithful.</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">LangSmith</strong> end to end—distributed tracing to benchmark performance (e.g. ~<strong class="text-tokyo-fg/90">P50 0.87s</strong>, <strong class="text-tokyo-fg/90">P99 &lt; 5.2s</strong> sustained in our runs).</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">FastAPI</strong> async backend with streaming tokens, <strong class="text-tokyo-fg/90">Google OAuth 2.0</strong>, custom rate limits, and a <strong class="text-tokyo-fg/90">React</strong> front end. <strong class="text-tokyo-fg/90">LangGraph</strong> reflection workflow for draft → critique → human-in-the-loop.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">Parent-document RAG</strong> on Supabase pgvector—searchable chunks plus full-document context so clause generation stays faithful.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">LangSmith</strong> end to end—distributed tracing to benchmark performance (e.g. ~<strong class="text-tokyo-fg/90">P50 0.87s</strong>, <strong class="text-tokyo-fg/90">P99 &lt; 5.2s</strong> sustained in our runs).</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">FastAPI</strong> async backend with streaming tokens, <strong class="text-tokyo-fg/90">Google OAuth 2.0</strong>, custom rate limits, and a <strong class="text-tokyo-fg/90">React</strong> front end. <strong class="text-tokyo-fg/90">LangGraph</strong> reflection workflow for draft → critique → human-in-the-loop.</span></li>
                 </ul>
                 <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-accent">LangGraph</span></li>
@@ -110,20 +113,20 @@
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">LangSmith · OAuth2</span></li>
                 </ul>
                 <div class="flex flex-wrap gap-2 sm:gap-3 pt-4 mt-auto border-t border-tokyo-fg/10">
-                    <a href="https://clause-ai-nbu8.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                    <a href="https://clause-ai-nbu8.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-mercury-primary text-xs px-4 py-2 gap-1.5 font-medium">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
                     <a href="https://github.com/kanishkautag/CLAUSE-AI" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-fg/5 border border-tokyo-fg/10 text-xs font-mono font-semibold text-tokyo-fg/80 hover:text-tokyo-cyan hover:border-tokyo-fg/20">Source <i data-lucide="github" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
                 </div>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-cyan/15">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/12">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Munchy Mumbai</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Munchy Mumbai</h3>
                     <i data-lucide="map" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
                 </div>
                 <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">LangGraph semantic router</strong> classifies intent and dispatches to sub-agents to keep token spend disciplined.</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Groq LPUs</strong> for fast inference; <strong class="text-tokyo-fg/90">Supabase hybrid search</strong> (vector + trigram) to cross-check Llama&nbsp;3 outputs and curb hallucinations.</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Google Maps &amp; YouTube APIs</strong> in a <strong class="text-tokyo-fg/90">React</strong> SPA; <strong class="text-tokyo-fg/90">FastAPI</strong> behind Docker, deployed to <strong class="text-tokyo-fg/90">Vercel</strong>.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">LangGraph semantic router</strong> classifies intent and dispatches to sub-agents to keep token spend disciplined.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">Groq LPUs</strong> for fast inference; <strong class="text-tokyo-fg/90">Supabase hybrid search</strong> (vector + trigram) to cross-check Llama&nbsp;3 outputs and curb hallucinations.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">Google Maps &amp; YouTube APIs</strong> in a <strong class="text-tokyo-fg/90">React</strong> SPA; <strong class="text-tokyo-fg/90">FastAPI</strong> behind Docker, deployed to <strong class="text-tokyo-fg/90">Vercel</strong>.</span></li>
                 </ul>
                 <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-accent">LangGraph</span></li>
@@ -132,20 +135,20 @@
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">Docker · Vercel</span></li>
                 </ul>
                 <div class="flex flex-wrap gap-2 sm:gap-3 pt-4 mt-auto border-t border-tokyo-fg/10">
-                    <a href="https://munchy-mumbai.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                    <a href="https://munchy-mumbai.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-mercury-primary text-xs px-4 py-2 gap-1.5 font-medium">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
                     <a href="https://github.com/kanishkautag/Munchy-Mumbai" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-fg/5 border border-tokyo-fg/10 text-xs font-mono font-semibold text-tokyo-fg/80 hover:text-tokyo-cyan hover:border-tokyo-fg/20">Source <i data-lucide="github" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
                 </div>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/10">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/10">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Amazon ML Challenge</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Amazon ML Challenge</h3>
                     <i data-lucide="trophy" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
                 </div>
                 <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Dual-model ensemble</strong> on 75K samples—fused <strong class="text-tokyo-fg/90">Qwen-0.6B</strong> text embeddings with <strong class="text-tokyo-fg/90">ViT</strong> vision features through a 3-layer regression head (~<strong class="text-tokyo-fg/90">44.8% SMAPE</strong>).</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span>Fine-tuned <strong class="text-tokyo-fg/90">RoBERTa-Large</strong> FFN with a custom 3-layer head (GELU, Smooth&nbsp;L1); averaged both architectures for robust price prediction.</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span>Competition placement: <strong class="tokyo-strong">Rank 183</strong> / 20,000+ teams (top ~1%).</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">Dual-model ensemble</strong> on 75K samples—fused <strong class="text-tokyo-fg/90">Qwen-0.6B</strong> text embeddings with <strong class="text-tokyo-fg/90">ViT</strong> vision features through a 3-layer regression head (~<strong class="text-tokyo-fg/90">44.8% SMAPE</strong>).</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span>Fine-tuned <strong class="text-tokyo-fg/90">RoBERTa-Large</strong> FFN with a custom 3-layer head (GELU, Smooth&nbsp;L1); averaged both architectures for robust price prediction.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span>Competition placement: <strong class="tokyo-strong">Rank 183</strong> / 20,000+ teams (top ~1%).</span></li>
                 </ul>
                 <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-green">PyTorch · ViT</span></li>
@@ -153,19 +156,19 @@
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">Multimodal · tabular</span></li>
                 </ul>
                 <div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-tokyo-fg/10">
-                    <a href="https://github.com/kanishkautag/AMAZON_ML_SOLUTION" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Notebooks <i data-lucide="github" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                    <a href="https://github.com/kanishkautag/AMAZON_ML_SOLUTION" target="_blank" rel="noopener noreferrer" class="btn-mercury-primary text-xs px-4 py-2 gap-1.5 font-medium">Notebooks <i data-lucide="github" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
                 </div>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/10">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/10">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">CF Time Tale</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">CF Time Tale</h3>
                     <i data-lucide="timer" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
                 </div>
                 <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Estimator for total time on Codeforces</strong>—given a handle and derived profile signals (ratings, tags, contest activity, etc.), it predicts <em>how much time you have sunk into the platform</em>, not a toy single-problem timer.</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">LightGBM</strong> on engineered features, with heavy hyperparameter tuning; validation <strong class="text-tokyo-fg/90">MAE 9.93 min</strong> and <strong class="text-tokyo-fg/90">RMSE 14.06 min</strong> on the setup we reported.</span></li>
-                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Flask</strong> app behind <strong class="text-tokyo-fg/90">nginx</strong>, <strong class="text-tokyo-fg/90">Redis</strong> for caching/session-style speedups, containerised with <strong class="text-tokyo-fg/90">Docker</strong>, deployed on <strong class="text-tokyo-fg/90">Render</strong> with a dashboard for breakdowns and analysis.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">Estimator for total time on Codeforces</strong>—given a handle and derived profile signals (ratings, tags, contest activity, etc.), it predicts <em>how much time you have sunk into the platform</em>, not a toy single-problem timer.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">LightGBM</strong> on engineered features, with heavy hyperparameter tuning; validation <strong class="text-tokyo-fg/90">MAE 9.93 min</strong> and <strong class="text-tokyo-fg/90">RMSE 14.06 min</strong> on the setup we reported.</span></li>
+                    <li class="flex gap-2"><span class="text-[#70707d] shrink-0" aria-hidden="true">▸</span><span><strong class="text-tokyo-fg/90">Flask</strong> app behind <strong class="text-tokyo-fg/90">nginx</strong>, <strong class="text-tokyo-fg/90">Redis</strong> for caching/session-style speedups, containerised with <strong class="text-tokyo-fg/90">Docker</strong>, deployed on <strong class="text-tokyo-fg/90">Render</strong> with a dashboard for breakdowns and analysis.</span></li>
                 </ul>
                 <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-green">LightGBM</span></li>
@@ -174,7 +177,7 @@
                     <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">Render · Python</span></li>
                 </ul>
                 <div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-tokyo-fg/10">
-                    <a href="https://cf-time-tale1.onrender.com/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                    <a href="https://cf-time-tale1.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-mercury-primary text-xs px-4 py-2 gap-1.5 font-medium">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
                     <a href="https://codeforces.com/profile/Prophet05" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-fg/5 border border-tokyo-fg/10 text-xs font-mono font-semibold text-tokyo-fg/80 hover:text-tokyo-cyan">Codeforces <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
                 </div>
             </article>
@@ -184,9 +187,9 @@
         <section aria-labelledby="more-heading">
             <h2 id="more-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-fg/45 mb-6">More on GitHub</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <article class="group glass-panel rounded-2xl p-6 card-elevated flex flex-col border border-tokyo-fg/10">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated flex flex-col border border-tokyo-fg/10">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">AURA: Cosmic Weather</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">AURA: Cosmic Weather</h3>
                     <i data-lucide="cloud-lightning" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Predictive analytics for space weather financial impact—<strong class="text-tokyo-fg/90">FastAPI</strong> backend, <strong class="text-tokyo-fg/90">React</strong> frontend, plus ML and Monte Carlo simulations to aid insurers.</p>
@@ -198,9 +201,9 @@
                 <a href="https://github.com/kanishkautag/Aura-Codeissance2k25" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">ProSizeNet</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">ProSizeNet</h3>
                     <i data-lucide="dna" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Hybrid CNN-Transformer architecture achieving SOTA performance in predicting protein residue sizes; includes paths toward on-device inference with <strong class="text-tokyo-fg/90">Core ML</strong> for Apple deployment.</p>
@@ -212,9 +215,9 @@
                 <a href="https://github.com/kanishkautag/ProSizeNet-Predicting-Protein-Residue-Size-Using-Machine-Learning" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Multi-Agent Diagnosis</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Multi-Agent Diagnosis</h3>
                     <i data-lucide="activity" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed"><strong class="text-tokyo-fg/90">Multi-agent architecture</strong> for triage and routing: CrewAI + Gemini agents orchestrated behind a <strong class="text-tokyo-fg/90">FastAPI</strong> service and a <strong class="text-tokyo-fg/90">React</strong> UI.</p>
@@ -226,9 +229,9 @@
                 <a href="https://github.com/kanishkautag/Multi-Agent-Med-System" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">AI Job Assistant</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">AI Job Assistant</h3>
                     <i data-lucide="briefcase" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career co-pilot with smart job matching, ATS analysis, cover letters, and course suggestions—wired to <strong class="text-tokyo-fg/90">Google (Gemini)</strong> APIs and complementary tooling for search and generation.</p>
@@ -240,9 +243,9 @@
                 <a href="https://github.com/kanishkautag/AI-Job-Assistant" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">SkillMorph</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">SkillMorph</h3>
                     <i data-lucide="trending-up" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career recommendation platform combining live job listings and course suggestions with auth—built with <strong class="text-tokyo-fg/90">React</strong>, <strong class="text-tokyo-fg/90">FastAPI</strong>, and Firebase for rapid hackathon iteration.</p>
@@ -254,9 +257,9 @@
                 <a href="https://github.com/kanishkautag/Neural-Ninjas" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Paper Title Gen</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Paper Title Gen</h3>
                     <i data-lucide="book-open" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed flex-grow">Fine-tuned <strong class="text-tokyo-fg/90">GPT-2</strong> for research-style title generation using full fine-tuning and <strong class="text-tokyo-fg/90">LoRA / QLoRA</strong>-style parameter-efficient training—highlights end-to-end model training, alongside the embedding, chunking, and <strong class="text-tokyo-fg/90">RAG</strong> patterns I use in larger retrieval systems.</p>
@@ -271,9 +274,9 @@
                 </div>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Student Heatmap</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Student Heatmap</h3>
                     <i data-lucide="map" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed flex-grow">Interactive heatmap visualizing the distribution of Indian students using Pandas and Folium.</p>
@@ -287,9 +290,9 @@
                 </div>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Therapy Chatbot</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Therapy Chatbot</h3>
                     <i data-lucide="heart-handshake" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Multi-agent mental wellness assistant with empathetic AI chat, journaling, and mood tracking.</p>
@@ -300,9 +303,9 @@
                 <a href="https://github.com/kanishkautag/Mental-Therapy-Chatbot-App" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
+            <article class="group glass-panel rounded-2xl mercury-card p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Drug Target MLP</h3>
+                    <h3 class="text-xl font-semibold tokyo-strong tracking-tight group-hover:opacity-[0.92] transition-opacity">Drug Target MLP</h3>
                     <i data-lucide="microscope" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">MLP model to classify drug target statuses using TF-IDF, achieving 95% validation accuracy.</p>
