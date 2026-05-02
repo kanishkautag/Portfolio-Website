@@ -1,0 +1,271 @@
+/*
+  Palettes — Tokyo Night (dark) & paper/indigo daylight (light)
+  Dark (Tokyo-ish): Deep base #0f0f14, fg #c0caf5, cyan accent #7dcfff, violet #bb9af7, green #9ece6a
+  Light: Cool paper #f1f5f9, slate text #334155, sky accent #0369a1 / #0ea5e9, indigo violet #6366f1, emerald accent #059669
+*/
+[data-theme="dark"] {
+  --tokyo-bg-rgb: 15 15 20;
+  --tokyo-fg-rgb: 192 202 245;
+  --tokyo-ink-rgb: 22 23 34;
+  --tokyo-chip-rgb: 26 27 38;
+  --tokyo-cyan-rgb: 125 207 255;
+  --tokyo-accent-rgb: 187 154 247;
+  --tokyo-green-rgb: 158 206 106;
+  --glass-fill: rgba(20, 20, 26, 0.55);
+  --glass-fill-strong: rgba(20, 20, 26, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --nav-border: rgba(125, 207, 255, 0.12);
+  --site-footer-fill: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] {
+  --tokyo-bg-rgb: 241 245 249;
+  --tokyo-fg-rgb: 51 65 85;
+  --tokyo-ink-rgb: 248 250 252;
+  --tokyo-chip-rgb: 226 232 240;
+  --tokyo-cyan-rgb: 3 105 161;
+  --tokyo-accent-rgb: 99 102 241;
+  --tokyo-green-rgb: 5 122 85;
+  --glass-fill: rgba(255, 255, 255, 0.58);
+  --glass-fill-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --nav-border: rgba(3, 105, 161, 0.18);
+  --site-footer-fill: rgba(255, 255, 255, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: rgb(var(--tokyo-bg-rgb));
+  background-image:
+    radial-gradient(ellipse 80% 55% at 50% -20%, rgb(var(--tokyo-cyan-rgb) / 0.06), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgb(var(--tokyo-accent-rgb) / 0.06), transparent 45%);
+  color: rgb(var(--tokyo-fg-rgb));
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#bg-canvas canvas {
+  display: block;
+}
+
+/* Frosted Tokyo panels */
+.glass-panel {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(
+    155deg,
+    var(--glass-fill-strong) 0%,
+    var(--glass-fill) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  box-shadow:
+    inset 1px 1px 0 rgb(255 255 255 / 0.06),
+    0 12px 40px rgb(0 0 0 / 0.15);
+}
+
+[data-theme="light"] .glass-panel {
+  box-shadow:
+    inset 1px 1px 0 rgb(255 255 255 / 0.9),
+    0 10px 28px rgb(15 23 42 / 0.08);
+}
+
+.site-nav {
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--glass-border);
+  background: var(--site-footer-fill);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  margin-left: auto;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: rgb(var(--tokyo-fg-rgb));
+  background: rgb(var(--tokyo-chip-rgb) / 0.45);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.65rem;
+  cursor: pointer;
+  transition:
+    transform 140ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 140ms ease;
+}
+
+.theme-toggle:hover {
+  background: rgb(var(--tokyo-cyan-rgb) / 0.14);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: rgb(var(--tokyo-cyan-rgb) / 0.12);
+}
+
+.card-elevated {
+  transition:
+    transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 180ms ease;
+}
+
+.card-elevated:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 1px 1px 0 rgb(255 255 255 / 0.08),
+    0 16px 48px rgb(var(--tokyo-cyan-rgb) / 0.07);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgb(var(--tokyo-cyan-rgb));
+  outline-offset: 3px;
+}
+
+.link-pill {
+  border-radius: 0.65rem !important;
+  transition:
+    transform 140ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+  border-style: solid;
+  border-width: 1px;
+}
+
+[data-theme="dark"] .link-pill {
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.2);
+}
+
+.link-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.18);
+}
+
+.chip-muted {
+  background-color: rgb(var(--tokyo-chip-rgb));
+  border: 1px solid var(--glass-border);
+}
+
+.nn-digit-btn {
+  background-color: rgb(var(--tokyo-chip-rgb) / 0.55);
+  color: rgb(var(--tokyo-fg-rgb));
+  border: 1px solid rgb(var(--tokyo-fg-rgb) / 0.14);
+}
+
+.nn-digit-btn:hover {
+  background-color: rgb(var(--tokyo-cyan-rgb) / 0.22);
+  border-color: rgb(var(--tokyo-cyan-rgb) / 0.45);
+}
+
+[data-theme="light"] .nn-digit-btn:hover {
+  background-color: rgb(var(--tokyo-cyan-rgb) / 0.14);
+}
+
+.nav-link-active {
+  color: rgb(var(--tokyo-cyan-rgb));
+  text-shadow: 0 0 18px rgb(var(--tokyo-cyan-rgb) / 0.35);
+}
+
+[data-theme="light"] .nav-link-active {
+  text-shadow: none;
+}
+
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-link:not(.nav-link-active)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: rgb(var(--tokyo-cyan-rgb));
+  transition: width 140ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:not(.nav-link-active):hover::after {
+  width: 100%;
+}
+
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  padding: 0.55rem 0.95rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  left: 1rem;
+  top: 1rem;
+  z-index: 9999;
+  background: rgb(var(--tokyo-cyan-rgb));
+  color: rgb(var(--tokyo-bg-rgb));
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 0.65rem;
+  border: none;
+}
+
+.glow-text {
+  text-shadow: 0 0 14px rgb(var(--tokyo-cyan-rgb) / 0.42);
+}
+
+[data-theme="light"] .glow-text {
+  text-shadow: none;
+}
+
+/* Headlines & strong contrasts (readable in both modes) */
+.tokyo-strong {
+  color: #f8fafc;
+}
+
+[data-theme="light"] .tokyo-strong {
+  color: #0f172a;
+}

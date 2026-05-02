@@ -3,163 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanishka Utagikar</title>
+    <meta name="description" content="Kanishka Utagikar — Applied AI @ MENA AI (remote). Designs and ships end-to-end applied AI, retrieval architectures, and high-performance backends. Projects: Clause.ai, Munchy Mumbai, Amazon ML Challenge.">
+    <meta name="author" content="Kanishka Utagikar">
+    <meta name="theme-color" content="#0f0f14">
+    <script>
+    (function () {
+      var k = "portfolio-theme";
+      var r = document.documentElement;
+      try {
+        var s = localStorage.getItem(k);
+        if (s === "light" || s === "dark") r.dataset.theme = s;
+        else if (window.matchMedia("(prefers-color-scheme: light)").matches) r.dataset.theme = "light";
+        else r.dataset.theme = "dark";
+      } catch (e) {
+        r.dataset.theme = "dark";
+      }
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m && r.dataset.theme) {
+        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#0f0f14");
+      }
+    })();
+    </script>
+    <link rel="canonical" href="https://kanishkautag.github.io/Portfolio-Website/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kanishka Utagikar · Backend &amp; Applied AI">
+    <meta property="og:description" content="End-to-end applied AI, retrieval architectures, and high-performance backend services. Applied AI @ MENA AI (remote).">
+    <meta property="og:url" content="https://kanishkautag.github.io/Portfolio-Website/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kanishka Utagikar">
+    <title>Kanishka Utagikar · Backend &amp; Applied AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                        sans: ['"Inter"', 'sans-serif'],
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         tokyo: {
-                            bg: '#0f0f14',
-                            card: 'rgba(20, 20, 25, 0.7)',
-                            fg: '#a9b1d6',
-                            accent: '#bb9af7',
-                            cyan: '#7dcfff',
-                            green: '#9ece6a',
-                        }
-                    }
-                }
-            }
-        }
+                            bg: 'rgb(var(--tokyo-bg-rgb) / <alpha-value>)',
+                            fg: 'rgb(var(--tokyo-fg-rgb) / <alpha-value>)',
+                            ink: 'rgb(var(--tokyo-ink-rgb) / <alpha-value>)',
+                            cyan: 'rgb(var(--tokyo-cyan-rgb) / <alpha-value>)',
+                            accent: 'rgb(var(--tokyo-accent-rgb) / <alpha-value>)',
+                            green: 'rgb(var(--tokyo-green-rgb) / <alpha-value>)',
+                            chip: 'rgb(var(--tokyo-chip-rgb) / <alpha-value>)',
+                        },
+                    },
+                },
+            },
+        };
     </script>
-    <style>
-        body { margin: 0; overflow-x: hidden; background-color: #0f0f14; }
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .glass-panel {
-            background: rgba(15, 15, 20, 0.4);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .glow-text { text-shadow: 0 0 10px rgba(125, 207, 255, 0.5); }
-    </style>
 </head>
-<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan selection:text-tokyo-bg">
+<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan/35 selection:text-tokyo-bg font-sans">
 
-    <div id="bg-canvas"></div>
+    <a href="#main" class="skip-link">Skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel border-b-0 top-0">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-mono text-sm font-bold text-tokyo-cyan">Kanishka Utagikar</a>
-            <div class="space-x-8 hidden md:flex font-mono text-xs">
-                <a href="index.html" class="text-white">Home</a>
-                <a href="projects.html" class="hover:text-tokyo-cyan transition">Projects</a>
-                <a href="contact.html" class="hover:text-tokyo-cyan transition">Resume</a>
+    <div id="bg-canvas" aria-hidden="true"></div>
+
+    <header class="fixed w-full z-50 top-0 glass-panel site-nav">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2" aria-label="Primary">
+            <a href="index.html" class="font-mono text-sm font-semibold tracking-tight text-tokyo-cyan hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
+            <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 flex-1">
+                <div class="hidden md:flex items-center gap-8 font-mono text-xs">
+                    <a href="index.html" class="nav-link nav-link-active">Home</a>
+                    <a href="projects.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
+                    <a href="contact.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
+                </div>
+                <div class="flex md:hidden items-center gap-3 font-mono text-[11px]">
+                    <a href="projects.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
+                    <a href="contact.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
+                </div>
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme"><span class="theme-icon-dark" aria-hidden="true">☾</span><span class="theme-icon-light" hidden aria-hidden="true">☀</span></button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <main class="relative z-10 pt-48 pb-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
+    <main id="main" class="relative z-10 pt-36 sm:pt-44 pb-16 px-4 sm:px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center" aria-label="Home">
         
-        <!-- Hero: Minimalist -->
-        <div class="max-w-3xl mb-32">
-            <h1 class="text-6xl md:text-8xl font-bold text-white mb-4 tracking-tighter">
-                Kanishka Utagikar.
+        <!-- Hero -->
+        <div class="max-w-4xl mb-10">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-accent/90 mb-4">Applied AI @ MENA AI</p>
+            <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold tokyo-strong mb-5 tracking-tight leading-[1.05]">
+                Kanishka Utagikar
             </h1>
-            <p class="text-2xl md:text-3xl text-tokyo-fg/60 font-light">
-                Pre-final year IT student building production-grade AI/ML systems with real-world impact.
+            <p class="text-lg sm:text-xl text-tokyo-fg/82 font-light leading-relaxed max-w-2xl">
+                <strong class="tokyo-strong font-medium">Applied AI</strong> @ <strong class="tokyo-strong font-medium">MENA AI</strong>
+                <span class="text-tokyo-fg/50"> · remote</span>
             </p>
+            <p class="text-base sm:text-lg text-tokyo-fg/72 mt-4 leading-relaxed max-w-2xl">
+                I design and ship end-to-end applied AI systems, including retrieval architectures and high-performance backend services.
+            </p>
+            <p class="text-sm text-tokyo-fg/48 mt-5 font-mono max-w-xl">
+                <a href="projects.html" class="text-tokyo-cyan hover:text-tokyo-fg transition">Projects</a>
+                <span class="text-tokyo-fg/30 mx-2">·</span>
+                <a href="contact.html" class="text-tokyo-fg/55 hover:text-tokyo-cyan transition">Resume &amp; links</a>
+            </p>
+            <ul class="flex flex-wrap gap-2.5 mt-8 list-none p-0" role="list">
+                <li><a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-mono text-tokyo-fg hover:bg-tokyo-fg/10 hover:border-tokyo-cyan/35 hover:text-tokyo-cyan" aria-label="GitHub profile">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0077b5]/18 border border-[#0077b5]/35 text-sm font-mono text-[#9fdcff] hover:bg-[#0077b5]/28" aria-label="LinkedIn profile">LinkedIn</a></li>
+                <li><a href="https://codolio.com/profile/KanUtag" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-mono hover:bg-tokyo-fg/10 hover:text-tokyo-cyan" aria-label="Codolio competitive programming profile">Codolio</a></li>
+                <li><a href="https://leetcode.com/u/kanishkautag/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#ffa116]/12 border border-[#ffa116]/32 text-sm font-mono text-[#ffc078] hover:bg-[#ffa116]/22" aria-label="LeetCode profile">LeetCode</a></li>
+                <li><a href="https://x.com/KanishkaUt18947" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-fg/6 border border-tokyo-fg/10 text-sm font-mono hover:bg-tokyo-fg/10 hover:text-tokyo-cyan" aria-label="X (Twitter) profile">X</a></li>
+                <li><a href="projects.html" class="link-pill inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/40 text-sm font-mono text-tokyo-cyan hover:bg-tokyo-cyan/25">Projects</a></li>
+            </ul>
         </div>
 
-        <!-- Achievements Section -->
-        <div id="achievements" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-32">
-            <div class="glass-panel p-6 rounded hover:bg-white/5 transition duration-500">
-                <div class="text-tokyo-cyan mb-2 text-xs font-mono uppercase">Amazon ML Challenge</div>
-                <div class="text-2xl font-bold text-white">Top 200</div>
-                <div class="text-xs text-gray-500 mt-1">Rank 183 / 20k+</div>
-            </div>
-            <div class="glass-panel p-6 rounded hover:bg-white/5 transition duration-500">
-                <div class="text-tokyo-accent mb-2 text-xs font-mono uppercase">Need For Code</div>
-                <div class="text-2xl font-bold text-white">Runner Up</div>
-                <div class="text-xs text-gray-500 mt-1">AI/ML Domain</div>
-            </div>
-            <div class="glass-panel p-6 rounded hover:bg-white/5 transition duration-500">
-                <div class="text-tokyo-green mb-2 text-xs font-mono uppercase">Codeforces</div>
-                <div class="text-2xl font-bold text-white">1261</div>
-                <div class="text-xs text-gray-500 mt-1">Max Rating (Pupil)</div>
-            </div>
-        </div>
+        <!-- Experience -->
+        <section class="glass-panel rounded-2xl p-6 md:p-8 mb-8 max-w-4xl card-elevated border border-tokyo-fg/10" aria-labelledby="exp-heading">
+            <h2 id="exp-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-accent mb-3">Experience</h2>
+            <p class="tokyo-strong text-lg font-semibold tracking-tight">Applied AI Intern — <span class="text-tokyo-fg/75 font-normal">MENA AI</span> <span class="text-sm font-normal text-tokyo-fg/45">(Dubai · remote)</span></p>
+            <p class="text-sm text-tokyo-fg/58 mt-3 leading-relaxed max-w-2xl">Shipping <strong class="text-tokyo-fg/85 font-medium">agentic pipelines</strong> end to end: tool-using flows, structured routing, evaluation hooks, and the observability you need when LLM steps are chained in production—not one-off notebook demos.</p>
+        </section>
 
-        <!-- Neural Network Visualization (Updated UI) -->
-        <div class="w-full max-w-3xl mx-auto mb-20">
-            <div class="flex flex-col items-center mb-6">
-                <h3 class="font-mono text-xl font-bold text-white glow-text mb-2">NEURAL INFERENCE ENGINE</h3>
-                <p class="text-sm text-tokyo-cyan animate-pulse">Click a number below to see the magic happen ↓</p>
-                <span class="font-mono text-xs text-gray-500 mt-2" id="status-text">WAITING FOR INPUT...</span>
+        <!-- Education -->
+        <section class="glass-panel rounded-2xl p-5 md:p-6 mb-10 max-w-4xl border border-tokyo-fg/8" aria-labelledby="edu-heading">
+            <h2 id="edu-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-cyan mb-2">Education</h2>
+            <p class="tokyo-strong text-sm font-semibold">B.E. Information Technology — Thadomal Shahani Engineering College, Mumbai</p>
+            <p class="text-xs text-tokyo-fg/50 mt-1 font-mono">Third year · CGPA 8.4/10 · expected 2027</p>
+        </section>
+
+        <!-- Longer technical blurb (not the hero) -->
+        <section class="glass-panel rounded-2xl p-6 md:p-7 mb-10 max-w-4xl border border-tokyo-fg/10" aria-labelledby="focus-heading">
+            <h2 id="focus-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-fg/55 mb-3">Engineering focus</h2>
+            <p class="text-sm sm:text-base text-tokyo-fg/70 leading-relaxed max-w-3xl">
+                I build the systems around models: <span class="text-tokyo-fg/90">agentic pipelines</span> with <span class="text-tokyo-fg/90">LangGraph</span> (routing, reflection, human-in-the-loop), <span class="text-tokyo-fg/90">parent-document RAG</span> on Supabase/pgvector, and <span class="text-tokyo-fg/90">FastAPI + React</span> stacks with OAuth, streaming, and <span class="text-tokyo-fg/90">LangSmith</span>-style tracing—so ideas survive contact with real users and traffic.
+            </p>
+        </section>
+
+        <!-- Skills (resume-aligned; compact) -->
+        <section class="mb-14 max-w-4xl" aria-labelledby="skills-heading">
+            <h2 id="skills-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-cyan mb-2">Skills</h2>
+            <p class="text-xs text-tokyo-fg/45 mb-5 max-w-2xl">Pulled from my resume—grouped for scanning. Not exhaustive of every side project.</p>
+            <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-xs sm:text-sm text-tokyo-fg/75 leading-relaxed">
+                <div>
+                    <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Languages</h3>
+                    <p>Python, Java, C++, JavaScript, TypeScript, SQL</p>
+                </div>
+                <div>
+                    <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Generative AI &amp; NLP</h3>
+                    <p>LangGraph, RAG pipelines, LangChain, Hugging Face, agentic architectures, LangSmith, vector DBs</p>
+                </div>
+                <div>
+                    <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Frameworks &amp; cloud</h3>
+                    <p>FastAPI, React, Docker, Flask, Streamlit, Git, AWS, <span class="text-tokyo-cyan/90">Temporal</span></p>
+                </div>
+                <div>
+                    <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">ML &amp; data</h3>
+                    <p>PyTorch, TensorFlow, Scikit-learn, Pandas</p>
+                </div>
+                <div class="sm:col-span-2">
+                    <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Deployment</h3>
+                    <p>Render · Railway · Hugging Face Spaces · Vercel</p>
+                </div>
+                <div class="sm:col-span-2">
+                    <h3 class="font-mono text-[11px] uppercase tracking-wider text-tokyo-accent mb-1.5">Databases</h3>
+                    <p>Supabase · PostgreSQL · MongoDB · pgvector (vector search on Postgres)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section id="achievements" class="mb-6" aria-labelledby="ach-heading">
+            <h2 id="ach-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-fg/55 mb-4">Achievements</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-5">
+            <a href="https://github.com/kanishkautag/AMAZON_ML_SOLUTION" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+                <div class="text-tokyo-cyan mb-1.5 text-[10px] font-mono uppercase tracking-wider">Amazon ML Challenge &apos;25</div>
+                <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-cyan transition">Top 200</div>
+                <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">Rank 183 / 20,000+ teams</div>
+            </a>
+            <a href="https://github.com/kanishkautag/NFC4_THE_OVERFLOWS" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+                <div class="text-tokyo-accent mb-1.5 text-[10px] font-mono uppercase tracking-wider">Need For Code &apos;25</div>
+                <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-accent transition">Runner up</div>
+                <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">AI/ML · 400+ teams registered</div>
+            </a>
+            <a href="https://codeforces.com/profile/Prophet05" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+                <div class="text-tokyo-green mb-1.5 text-[10px] font-mono uppercase tracking-wider">Codeforces</div>
+                <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-green transition">1261</div>
+                <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">Pupil · @Prophet05</div>
+            </a>
+            <a href="https://codolio.com/profile/KanUtag" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-xl card-elevated block group border border-tokyo-fg/10">
+                <div class="text-tokyo-fg/45 mb-1.5 text-[10px] font-mono uppercase tracking-wider">Codolio</div>
+                <div class="text-xl font-bold tokyo-strong group-hover:text-tokyo-accent transition">Profile</div>
+                <div class="text-[11px] text-tokyo-fg/40 mt-1.5 leading-snug">Contests &amp; sheets</div>
+            </a>
+            </div>
+            <p class="text-[11px] text-tokyo-fg/38 max-w-3xl leading-relaxed font-mono border-l-2 border-tokyo-cyan/20 pl-3">Certifications: Machine Learning A-Z (Udemy) · Neural Networks and Deep Learning (Coursera) · Complete Python Bootcamp (Udemy)</p>
+        </section>
+
+        <div class="h-8" aria-hidden="true"></div>
+
+        <!-- Neural demo -->
+        <section class="w-full max-w-3xl mx-auto mb-12 glass-panel rounded-2xl p-6 sm:p-8 border border-tokyo-cyan/15" aria-labelledby="nn-heading">
+            <div class="flex flex-col items-center text-center mb-6">
+                <h2 id="nn-heading" class="font-mono text-lg sm:text-xl font-bold tokyo-strong glow-text mb-2 tracking-tight">Neural inference demo</h2>
+                <p class="text-sm text-tokyo-fg/55 max-w-md">Pick a digit to animate a toy network (visualization only, not a trained model).</p>
+                <span class="font-mono text-[11px] text-tokyo-fg/45 mt-3 tabular-nums" id="status-text" aria-live="polite">WAITING FOR INPUT…</span>
             </div>
             
             <div id="input-buttons" class="flex gap-2 mb-4 justify-center"></div>
             
-            <div class="relative">
-                <canvas id="nn-canvas" width="700" height="250" class="w-full bg-black/40 rounded-lg border border-tokyo-cyan/20 shadow-[0_0_30px_rgba(125,207,255,0.1)]"></canvas>
+            <div class="relative rounded-xl overflow-hidden ring-1 ring-tokyo-fg/10">
+                <canvas id="nn-canvas" width="700" height="250" role="img" aria-label="Animated neural network diagram" class="w-full bg-tokyo-ink border border-tokyo-cyan/20 shadow-[0_0_32px_rgba(0,229,255,0.06)]"></canvas>
             </div>
             
-            <div id="prediction-bars" class="flex items-end gap-[2px] h-4 mt-2 w-full opacity-80"></div>
-        </div>
+            <div id="prediction-bars" class="flex items-end gap-[2px] h-4 mt-2 w-full opacity-80" aria-hidden="true"></div>
+        </section>
 
     </main>
 
+    <footer class="relative z-10 site-footer py-10 px-6 text-center">
+        <p class="text-xs text-tokyo-fg/35 font-mono mb-4">© <span id="y"></span> Kanishka Utagikar</p>
+        <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono text-tokyo-fg/50" aria-label="Footer">
+            <a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="hover:text-tokyo-cyan transition">GitHub</a>
+            <a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" rel="noopener noreferrer" class="hover:text-tokyo-cyan transition">LinkedIn</a>
+            <a href="projects.html" class="hover:text-tokyo-cyan transition">Projects</a>
+            <a href="contact.html" class="hover:text-tokyo-cyan transition">Connect</a>
+        </nav>
+    </footer>
+
+    <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+    <script src="theme.js"></script>
+    <script src="particles-bg.js"></script>
     <script src="oneko.js"></script>
     <script>lucide.createIcons();</script>
 
-    <!-- 1. PASSIVE BACKGROUND (No Interaction) -->
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 50;
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('bg-canvas').appendChild(renderer.domElement);
-        
-        const particleCount = 700;
-        const positions = new Float32Array(particleCount * 3);
-        const geometry = new THREE.BufferGeometry();
-        
-        for (let i = 0; i < particleCount; i++) {
-            const r = 40 + Math.random() * 20;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
-            
-            const x = r * Math.sin(phi) * Math.cos(theta);
-            const y = r * Math.sin(phi) * Math.sin(theta);
-            const z = r * Math.cos(phi);
-            
-            positions[i*3] = x; 
-            positions[i*3+1] = y; 
-            positions[i*3+2] = z;
-        }
-        
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const material = new THREE.PointsMaterial({ color: 0x555577, size: 0.7, transparent: true, opacity: 0.5 });
-        const particles = new THREE.Points(geometry, material);
-        scene.add(particles);
-
-        function animateBg() {
-            requestAnimationFrame(animateBg);
-            particles.rotation.y += 0.001; 
-            particles.rotation.x += 0.0005;
-            renderer.render(scene, camera);
-        }
-        animateBg();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
-
-    <!-- 2. NEURAL NETWORK LOGIC -->
+    <!-- Neural network demo -->
     <script>
         (function() {
+            function parseRgbVar(name) {
+                var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+                return v.split(/\s+/).filter(Boolean).map(Number);
+            }
+            function cyanRgba(alpha) {
+                var p = parseRgbVar("--tokyo-cyan-rgb");
+                return "rgba(" + p[0] + "," + p[1] + "," + p[2] + "," + alpha + ")";
+            }
+            function cyanRgbSolid() {
+                var p = parseRgbVar("--tokyo-cyan-rgb");
+                return "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")";
+            }
+            function greenRgbSolid() {
+                var p = parseRgbVar("--tokyo-green-rgb");
+                return "rgb(" + p[0] + "," + p[1] + "," + p[2] + ")";
+            }
+            function styleBarsAndStatusIdle() {
+                for (var i = 0; i < 10; i++) {
+                    var bar = document.getElementById("bar-" + i);
+                    if (bar) bar.style.backgroundColor = cyanRgbSolid();
+                }
+                if (statusText) statusText.style.color = "";
+            }
+
             const btnContainer = document.getElementById('input-buttons');
             const barContainer = document.getElementById('prediction-bars');
             const statusText = document.getElementById('status-text');
@@ -170,16 +271,21 @@
             for(let i=0; i<10; i++){
                 const btn = document.createElement('button');
                 btn.innerText = i;
-                btn.className = "w-8 h-8 rounded bg-white/10 hover:bg-tokyo-cyan hover:text-black text-sm font-bold font-mono transition-all border border-white/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(125,207,255,0.5)]";
+                btn.type = "button";
+                btn.setAttribute("aria-label", `Animate network for digit ${i}`);
+                btn.className = "nn-digit-btn w-9 h-9 rounded-md text-sm font-bold font-mono transition-all";
                 btn.onclick = () => runPass(i);
                 btnContainer.appendChild(btn);
 
                 const bar = document.createElement('div');
                 bar.id = `bar-${i}`;
-                bar.className = "flex-1 bg-tokyo-cyan transition-all duration-300 rounded-t-sm";
+                bar.className = "flex-1 transition-all duration-300 rounded-t-sm";
                 bar.style.height = "5%"; 
+                bar.style.backgroundColor = cyanRgbSolid();
                 barContainer.appendChild(bar);
             }
+
+            window.addEventListener('portfolio-theme', styleBarsAndStatusIdle);
 
             // --- Network Structure ---
             const layers = [];
@@ -216,7 +322,7 @@
 
             function runPass(digit) {
                 statusText.innerText = `ANALYZING INPUT [${digit}]...`;
-                statusText.style.color = "#7dcfff";
+                statusText.style.color = cyanRgbSolid();
                 
                 // Reset targets
                 layers.forEach(l => l.forEach(n => n.target = 0));
@@ -263,7 +369,7 @@
                 
                 setTimeout(() => {
                     statusText.innerText = `PREDICTION: ${digit} (CONFIDENCE: 99.9%)`;
-                    statusText.style.color = "#9ece6a";
+                    statusText.style.color = greenRgbSolid();
                 }, 800);
             }
 
@@ -290,7 +396,7 @@
                             alpha = c.signal;
                             lineWidth += 2; // Pulse expansion
                             ctx.shadowBlur = 15 * c.signal;
-                            ctx.shadowColor = "#7dcfff";
+                            ctx.shadowColor = cyanRgbSolid();
                         } else {
                             // Resting active path
                             if (c.from.val > 0.1) {
@@ -306,7 +412,7 @@
                         ctx.moveTo(c.from.x, c.from.y);
                         ctx.lineTo(c.to.x, c.to.y);
                         
-                        ctx.strokeStyle = `rgba(125, 207, 255, ${alpha})`;
+                        ctx.strokeStyle = cyanRgba(alpha);
                         ctx.lineWidth = lineWidth;
                         ctx.lineCap = "round";
                         ctx.stroke();
@@ -325,11 +431,11 @@
                     ctx.arc(n.x, n.y, 3 + (n.val * 3), 0, Math.PI*2);
                     
                     const brightness = n.val;
-                    ctx.fillStyle = `rgba(125, 207, 255, ${brightness})`;
+                    ctx.fillStyle = cyanRgba(brightness);
                     
                     if (brightness > 0.5) {
                          ctx.shadowBlur = 20 * brightness;
-                         ctx.shadowColor = "#7dcfff";
+                         ctx.shadowColor = cyanRgbSolid();
                     } else {
                         ctx.shadowBlur = 0;
                     }

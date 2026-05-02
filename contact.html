@@ -1,120 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Kanishka Utagikar</title>
+    <meta name="description" content="Contact Kanishka Utagikar — resume, email, GitHub, LinkedIn, Codolio, LeetCode.">
+    <meta name="theme-color" content="#0f0f14">
+    <script>
+    (function () {
+      var k = "portfolio-theme";
+      var r = document.documentElement;
+      try {
+        var s = localStorage.getItem(k);
+        if (s === "light" || s === "dark") r.dataset.theme = s;
+        else if (window.matchMedia("(prefers-color-scheme: light)").matches) r.dataset.theme = "light";
+        else r.dataset.theme = "dark";
+      } catch (e) {
+        r.dataset.theme = "dark";
+      }
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m && r.dataset.theme) {
+        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#0f0f14");
+      }
+    })();
+    </script>
+    <link rel="canonical" href="https://kanishkautag.github.io/Portfolio-Website/contact.html">
+    <meta property="og:title" content="Connect · Kanishka Utagikar">
+    <meta property="og:url" content="https://kanishkautag.github.io/Portfolio-Website/contact.html">
+    <title>Connect · Kanishka Utagikar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                        sans: ['"Inter"', 'sans-serif'],
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         tokyo: {
-                            bg: '#0f0f14',
-                            card: 'rgba(36, 40, 59, 0.4)',
-                            fg: '#a9b1d6',
-                            accent: '#bb9af7',
-                            cyan: '#7dcfff',
-                        }
-                    }
-                }
-            }
-        }
+                            bg: 'rgb(var(--tokyo-bg-rgb) / <alpha-value>)',
+                            fg: 'rgb(var(--tokyo-fg-rgb) / <alpha-value>)',
+                            ink: 'rgb(var(--tokyo-ink-rgb) / <alpha-value>)',
+                            cyan: 'rgb(var(--tokyo-cyan-rgb) / <alpha-value>)',
+                            accent: 'rgb(var(--tokyo-accent-rgb) / <alpha-value>)',
+                            green: 'rgb(var(--tokyo-green-rgb) / <alpha-value>)',
+                            chip: 'rgb(var(--tokyo-chip-rgb) / <alpha-value>)',
+                        },
+                    },
+                },
+            },
+        };
     </script>
-    <style>
-        body { margin: 0; background-color: #0f0f14; overflow: hidden; }
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .glass-panel { background: rgba(16, 16, 20, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.05); }
-    </style>
 </head>
-<body class="text-tokyo-fg antialiased h-screen flex flex-col">
+<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan/35 selection:text-tokyo-bg min-h-screen flex flex-col font-sans">
 
-    <div id="bg-canvas"></div>
+    <a href="#main" class="skip-link">Skip to content</a>
 
-    <nav class="fixed w-full z-50 glass-panel border-b-0 top-0">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-mono text-sm font-bold text-tokyo-cyan">Kanishka Utagikar</a>
-            <div class="space-x-8 hidden md:flex font-mono text-xs">
-                <a href="index.html" class="hover:text-white transition">Home</a>
-                <a href="projects.html" class="hover:text-white transition">Projects</a>
-                <a href="contact.html" class="text-white">Resume</a>
+    <div id="bg-canvas" aria-hidden="true"></div>
+
+    <header class="fixed w-full z-50 top-0 glass-panel site-nav">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2" aria-label="Primary">
+            <a href="index.html" class="font-mono text-sm font-semibold tracking-tight text-tokyo-cyan hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
+            <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 flex-1">
+                <div class="hidden md:flex items-center gap-8 font-mono text-xs">
+                    <a href="index.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
+                    <a href="projects.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
+                    <a href="contact.html" class="nav-link nav-link-active">Connect</a>
+                </div>
+                <div class="flex md:hidden items-center gap-3 font-mono text-[11px]">
+                    <a href="index.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
+                    <a href="projects.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Projects</a>
+                </div>
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme"><span class="theme-icon-dark" aria-hidden="true">☾</span><span class="theme-icon-light" hidden aria-hidden="true">☀</span></button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <main class="flex-grow flex flex-col items-center justify-center p-6">
-        <div class="glass-panel p-10 rounded-xl shadow-2xl text-center max-w-lg w-full">
-            <h1 class="text-2xl font-bold text-white mb-2">Connect</h1>
-            <p class="text-xs text-gray-400 mb-8">Open to internships & collaborations.</p>
+    <main id="main" class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 py-28 sm:py-32 w-full">
+        <div class="glass-panel p-8 sm:p-10 rounded-2xl shadow-2xl text-center max-w-md w-full card-elevated border border-tokyo-fg/12">
+            <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-tokyo-accent mb-3">Say hello</p>
+            <h1 class="text-2xl sm:text-3xl font-bold tokyo-strong mb-2 tracking-tight">Connect</h1>
+            <p class="text-sm text-tokyo-fg/55 mb-8 leading-relaxed">Backend · applied AI · internships and collaborations.</p>
 
-            <div class="grid gap-3">
-                <a href="https://drive.google.com/file/d/1OegPSe6gGOmWJiMjJxjoSyT6oF0qgHTn/view?usp=sharing" target="_blank" class="flex items-center justify-center gap-2 bg-tokyo-cyan text-black font-bold py-3 rounded hover:bg-white transition-all text-sm">
-                    <i data-lucide="file-text" class="w-4 h-4"></i> View Resume
-                </a>
-                
-                <a href="mailto:kanishka.utagikar@gmail.com" class="flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-mono py-3 rounded hover:bg-white/10 transition-all text-sm">
-                    <i data-lucide="mail" class="w-4 h-4"></i> kanishka.utagikar@gmail.com
+            <div class="grid gap-2.5">
+                <a href="https://drive.google.com/file/d/1OegPSe6gGOmWJiMjJxjoSyT6oF0qgHTn/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="link-pill flex items-center justify-center gap-2 bg-tokyo-cyan text-slate-900 font-semibold py-3 rounded-xl hover:bg-tokyo-fg/15 transition-all text-sm">
+                    <i data-lucide="file-text" class="w-4 h-4 shrink-0" aria-hidden="true"></i> Resume (PDF)
                 </a>
 
-                <div class="grid grid-cols-2 gap-3 mt-2">
-                    <a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded bg-[#0077b5]/20 text-[#0077b5] border border-[#0077b5]/30 hover:bg-[#0077b5] hover:text-white transition-all text-sm">
-                        <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                <a href="projects.html" class="link-pill flex items-center justify-center gap-2 bg-tokyo-accent/15 border border-tokyo-accent/35 text-tokyo-accent py-3 rounded-xl hover:bg-tokyo-accent/25 transition-all text-sm font-mono">
+                    <i data-lucide="layout-grid" class="w-4 h-4 shrink-0" aria-hidden="true"></i> Projects &amp; demos
+                </a>
+
+                <a href="mailto:kanishka.utagikar@gmail.com" class="link-pill flex items-center justify-center gap-2 bg-tokyo-fg/5 border border-tokyo-fg/10 tokyo-strong font-mono py-3 rounded-xl hover:bg-tokyo-fg/10 transition-all text-sm break-all">
+                    <i data-lucide="mail" class="w-4 h-4 shrink-0" aria-hidden="true"></i> kanishka.utagikar@gmail.com
+                </a>
+
+                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                    <a href="https://www.linkedin.com/in/kanishka-utagikar-6116b6223/" target="_blank" rel="noopener noreferrer" class="link-pill flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0077b5]/18 text-[#9fdcff] border border-[#0077b5]/35 hover:bg-[#0077b5]/30 text-sm font-medium">
+                        <i data-lucide="linkedin" class="w-4 h-4 shrink-0" aria-hidden="true"></i> LinkedIn
                     </a>
-                    <a href="https://github.com/kanishkautag" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded bg-white/5 text-white border border-white/10 hover:bg-white/20 transition-all text-sm">
-                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    <a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="link-pill flex items-center justify-center gap-2 py-3 rounded-xl bg-tokyo-fg/5 tokyo-strong border border-tokyo-fg/10 hover:bg-tokyo-fg/10 text-sm font-medium">
+                        <i data-lucide="github" class="w-4 h-4 shrink-0" aria-hidden="true"></i> GitHub
+                    </a>
+                    <a href="https://codolio.com/profile/KanUtag" target="_blank" rel="noopener noreferrer" class="link-pill flex items-center justify-center gap-2 py-3 rounded-xl bg-tokyo-fg/5 tokyo-strong border border-tokyo-fg/10 hover:bg-tokyo-fg/10 text-xs font-mono">
+                        Codolio
+                    </a>
+                    <a href="https://leetcode.com/u/kanishkautag/" target="_blank" rel="noopener noreferrer" class="link-pill flex items-center justify-center gap-2 py-3 rounded-xl bg-[#ffa116]/12 text-[#ffc078] border border-[#ffa116]/32 hover:bg-[#ffa116]/20 text-xs font-mono">
+                        LeetCode
+                    </a>
+                    <a href="https://x.com/KanishkaUt18947" target="_blank" rel="noopener noreferrer" class="link-pill col-span-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-tokyo-fg/5 tokyo-strong border border-tokyo-fg/10 hover:bg-tokyo-fg/10 text-sm font-mono">
+                        <i data-lucide="external-link" class="w-4 h-4 shrink-0" aria-hidden="true"></i> X (Twitter)
                     </a>
                 </div>
             </div>
         </div>
     </main>
 
+    <footer class="relative z-10 site-footer py-10 px-6 text-center mt-auto">
+        <p class="text-xs text-tokyo-fg/35 font-mono mb-4">© <span id="y"></span> Kanishka Utagikar</p>
+        <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono text-tokyo-fg/50" aria-label="Footer">
+            <a href="index.html" class="hover:text-tokyo-cyan transition">Home</a>
+            <a href="projects.html" class="hover:text-tokyo-cyan transition">Projects</a>
+            <a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="hover:text-tokyo-cyan transition">GitHub</a>
+        </nav>
+    </footer>
+
+    <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+    <script src="theme.js"></script>
+    <script src="particles-bg.js"></script>
     <script src="oneko.js"></script>
     <script>lucide.createIcons();</script>
-    
-    <!-- PASSIVE BACKGROUND SCRIPT -->
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 50;
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('bg-canvas').appendChild(renderer.domElement);
-        
-        const particleCount = 700;
-        const positions = new Float32Array(particleCount * 3);
-        const geometry = new THREE.BufferGeometry();
-        for (let i = 0; i < particleCount; i++) {
-            const r = 40 + Math.random() * 20;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
-            positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
-            positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-            positions[i*3+2] = r * Math.cos(phi);
-        }
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0x555577, size: 0.7, transparent: true, opacity: 0.5 }));
-        scene.add(particles);
 
-        function animateBg() {
-            requestAnimationFrame(animateBg);
-            particles.rotation.y += 0.001;
-            particles.rotation.x += 0.0005;
-            renderer.render(scene, camera);
-        }
-        animateBg();
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
 </body>
 </html>

@@ -3,234 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Kanishka Utagikar</title>
+    <meta name="description" content="Projects by Kanishka Utagikar — Clause.ai, Munchy Mumbai, Amazon ML Challenge, RAG, and more with live demos and source.">
+    <meta name="theme-color" content="#0f0f14">
+    <script>
+    (function () {
+      var k = "portfolio-theme";
+      var r = document.documentElement;
+      try {
+        var s = localStorage.getItem(k);
+        if (s === "light" || s === "dark") r.dataset.theme = s;
+        else if (window.matchMedia("(prefers-color-scheme: light)").matches) r.dataset.theme = "light";
+        else r.dataset.theme = "dark";
+      } catch (e) {
+        r.dataset.theme = "dark";
+      }
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m && r.dataset.theme) {
+        m.setAttribute("content", r.dataset.theme === "light" ? "#f1f5f9" : "#0f0f14");
+      }
+    })();
+    </script>
+    <link rel="canonical" href="https://kanishkautag.github.io/Portfolio-Website/projects.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects · Kanishka Utagikar">
+    <meta property="og:url" content="https://kanishkautag.github.io/Portfolio-Website/projects.html">
+    <title>Projects · Kanishka Utagikar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                        sans: ['"Inter"', 'sans-serif'],
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         tokyo: {
-                            bg: '#0f0f14',
-                            card: '#24283b',
-                            fg: '#a9b1d6',
-                            accent: '#bb9af7',
-                            cyan: '#7dcfff',
-                            green: '#9ece6a',
-                            orange: '#ff9e64'
-                        }
-                    }
-                }
-            }
-        }
+                            bg: 'rgb(var(--tokyo-bg-rgb) / <alpha-value>)',
+                            fg: 'rgb(var(--tokyo-fg-rgb) / <alpha-value>)',
+                            ink: 'rgb(var(--tokyo-ink-rgb) / <alpha-value>)',
+                            cyan: 'rgb(var(--tokyo-cyan-rgb) / <alpha-value>)',
+                            accent: 'rgb(var(--tokyo-accent-rgb) / <alpha-value>)',
+                            green: 'rgb(var(--tokyo-green-rgb) / <alpha-value>)',
+                            chip: 'rgb(var(--tokyo-chip-rgb) / <alpha-value>)',
+                        },
+                    },
+                },
+            },
+        };
     </script>
     <style>
-        body { margin: 0; background-color: #0f0f14; overflow-x: hidden; }
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .glass-panel { background: rgba(16, 16, 20, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.05); }
+        .proj-tag { border: 1px solid var(--glass-border); }
     </style>
 </head>
-<body class="text-tokyo-fg antialiased font-sans">
-    
-    <div id="bg-canvas"></div>
+<body class="text-tokyo-fg antialiased selection:bg-tokyo-cyan/35 selection:text-tokyo-bg font-sans">
 
-    <nav class="fixed w-full z-50 glass-panel border-b-0 top-0">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-mono text-sm font-bold text-tokyo-cyan">Kanishka Utagikar</a>
-            <div class="space-x-8 hidden md:flex font-mono text-xs">
-                <a href="index.html" class="hover:text-white transition">Home</a>
-                <a href="projects.html" class="text-white">Projects</a>
-                <a href="contact.html" class="hover:text-white transition">Resume</a>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <div id="bg-canvas" aria-hidden="true"></div>
+
+    <header class="fixed w-full z-50 top-0 glass-panel site-nav">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2" aria-label="Primary">
+            <a href="index.html" class="font-mono text-sm font-semibold tracking-tight text-tokyo-cyan hover:opacity-90 transition" title="Kanishka Utagikar — home">KU</a>
+            <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 flex-1">
+                <div class="hidden md:flex items-center gap-8 font-mono text-xs">
+                    <a href="index.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
+                    <a href="projects.html" class="nav-link nav-link-active">Projects</a>
+                    <a href="contact.html" class="nav-link text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
+                </div>
+                <div class="flex md:hidden items-center gap-3 font-mono text-[11px]">
+                    <a href="index.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Home</a>
+                    <a href="contact.html" class="text-tokyo-fg/80 hover:text-tokyo-cyan transition">Connect</a>
+                </div>
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme"><span class="theme-icon-dark" aria-hidden="true">☾</span><span class="theme-icon-light" hidden aria-hidden="true">☀</span></button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-        <header class="mb-16">
-            <h2 class="text-4xl font-bold text-white mb-4">Selected Works</h2>
-            <p class="text-tokyo-fg/70 max-w-2xl">A collection of my top 10 projects involving Generative AI, Bioinformatics, and Full-stack development.</p>
+    <main id="main" class="pt-32 sm:pt-36 pb-16 px-4 sm:px-6 max-w-7xl mx-auto">
+        <header class="mb-12 max-w-3xl">
+            <h1 class="text-3xl sm:text-4xl font-bold tokyo-strong mb-4 tracking-tight">Projects</h1>
+            <p class="text-tokyo-fg/65 leading-relaxed">This is the long-form version of my work—systems, metrics, and links in one place. Featured builds first; older research and hackathon repos underneath. All public code lives on <a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="text-tokyo-cyan hover:text-tokyo-cyan underline decoration-tokyo-cyan/40 underline-offset-2">GitHub</a>.</p>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <!-- Project Cards (Restored from your upload) -->
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+        <section aria-labelledby="feat-heading">
+            <h2 id="feat-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-accent mb-6">Featured</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-20">
+            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-cyan/15">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Clause.ai</h3>
+                    <i data-lucide="scale" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
+                </div>
+                <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Parent-document RAG</strong> on Supabase pgvector—searchable chunks plus full-document context so clause generation stays faithful.</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">LangSmith</strong> end to end—distributed tracing to benchmark performance (e.g. ~<strong class="text-tokyo-fg/90">P50 0.87s</strong>, <strong class="text-tokyo-fg/90">P99 &lt; 5.2s</strong> sustained in our runs).</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">FastAPI</strong> async backend with streaming tokens, <strong class="text-tokyo-fg/90">Google OAuth 2.0</strong>, custom rate limits, and a <strong class="text-tokyo-fg/90">React</strong> front end. <strong class="text-tokyo-fg/90">LangGraph</strong> reflection workflow for draft → critique → human-in-the-loop.</span></li>
+                </ul>
+                <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-accent">LangGraph</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-cyan">Supabase · pgvector</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-green">FastAPI · React</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">LangSmith · OAuth2</span></li>
+                </ul>
+                <div class="flex flex-wrap gap-2 sm:gap-3 pt-4 mt-auto border-t border-tokyo-fg/10">
+                    <a href="https://clause-ai-nbu8.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                    <a href="https://github.com/kanishkautag/CLAUSE-AI" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-fg/5 border border-tokyo-fg/10 text-xs font-mono font-semibold text-tokyo-fg/80 hover:text-tokyo-cyan hover:border-tokyo-fg/20">Source <i data-lucide="github" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                </div>
+            </article>
+
+            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-cyan/15">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Munchy Mumbai</h3>
+                    <i data-lucide="map" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
+                </div>
+                <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">LangGraph semantic router</strong> classifies intent and dispatches to sub-agents to keep token spend disciplined.</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Groq LPUs</strong> for fast inference; <strong class="text-tokyo-fg/90">Supabase hybrid search</strong> (vector + trigram) to cross-check Llama&nbsp;3 outputs and curb hallucinations.</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Google Maps &amp; YouTube APIs</strong> in a <strong class="text-tokyo-fg/90">React</strong> SPA; <strong class="text-tokyo-fg/90">FastAPI</strong> behind Docker, deployed to <strong class="text-tokyo-fg/90">Vercel</strong>.</span></li>
+                </ul>
+                <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-accent">LangGraph</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-cyan">Groq · Supabase</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-green">React · FastAPI</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">Docker · Vercel</span></li>
+                </ul>
+                <div class="flex flex-wrap gap-2 sm:gap-3 pt-4 mt-auto border-t border-tokyo-fg/10">
+                    <a href="https://munchy-mumbai.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                    <a href="https://github.com/kanishkautag/Munchy-Mumbai" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-fg/5 border border-tokyo-fg/10 text-xs font-mono font-semibold text-tokyo-fg/80 hover:text-tokyo-cyan hover:border-tokyo-fg/20">Source <i data-lucide="github" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                </div>
+            </article>
+
+            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/10">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Amazon ML Challenge</h3>
+                    <i data-lucide="trophy" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
+                </div>
+                <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Dual-model ensemble</strong> on 75K samples—fused <strong class="text-tokyo-fg/90">Qwen-0.6B</strong> text embeddings with <strong class="text-tokyo-fg/90">ViT</strong> vision features through a 3-layer regression head (~<strong class="text-tokyo-fg/90">44.8% SMAPE</strong>).</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span>Fine-tuned <strong class="text-tokyo-fg/90">RoBERTa-Large</strong> FFN with a custom 3-layer head (GELU, Smooth&nbsp;L1); averaged both architectures for robust price prediction.</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span>Competition placement: <strong class="tokyo-strong">Rank 183</strong> / 20,000+ teams (top ~1%).</span></li>
+                </ul>
+                <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-green">PyTorch · ViT</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-cyan">Qwen · RoBERTa</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">Multimodal · tabular</span></li>
+                </ul>
+                <div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-tokyo-fg/10">
+                    <a href="https://github.com/kanishkautag/AMAZON_ML_SOLUTION" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Notebooks <i data-lucide="github" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                </div>
+            </article>
+
+            <article class="group glass-panel rounded-2xl p-6 sm:p-7 card-elevated flex flex-col border border-tokyo-fg/10">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">CF Time Tale</h3>
+                    <i data-lucide="timer" class="text-tokyo-fg/50 w-5 h-5 shrink-0"></i>
+                </div>
+                <ul class="text-sm text-tokyo-fg/78 mb-4 leading-relaxed flex-grow space-y-2 list-none pl-0 m-0">
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Estimator for total time on Codeforces</strong>—given a handle and derived profile signals (ratings, tags, contest activity, etc.), it predicts <em>how much time you have sunk into the platform</em>, not a toy single-problem timer.</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">LightGBM</strong> on engineered features, with heavy hyperparameter tuning; validation <strong class="text-tokyo-fg/90">MAE 9.93 min</strong> and <strong class="text-tokyo-fg/90">RMSE 14.06 min</strong> on the setup we reported.</span></li>
+                    <li class="flex gap-2"><span class="text-tokyo-cyan shrink-0">▸</span><span><strong class="text-tokyo-fg/90">Flask</strong> app behind <strong class="text-tokyo-fg/90">nginx</strong>, <strong class="text-tokyo-fg/90">Redis</strong> for caching/session-style speedups, containerised with <strong class="text-tokyo-fg/90">Docker</strong>, deployed on <strong class="text-tokyo-fg/90">Render</strong> with a dashboard for breakdowns and analysis.</span></li>
+                </ul>
+                <ul class="flex flex-wrap gap-2 mb-6 font-mono text-xs list-none p-0 m-0" role="list">
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-green">LightGBM</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-cyan">Redis · nginx</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-tokyo-accent">Flask · Docker</span></li>
+                    <li><span class="proj-tag px-2 py-1 rounded-md chip-muted text-amber-600">Render · Python</span></li>
+                </ul>
+                <div class="flex flex-wrap gap-2 pt-4 mt-auto border-t border-tokyo-fg/10">
+                    <a href="https://cf-time-tale1.onrender.com/" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-cyan/15 border border-tokyo-cyan/35 text-xs font-mono font-semibold text-tokyo-cyan hover:bg-tokyo-cyan/25 hover:text-tokyo-cyan">Live <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                    <a href="https://codeforces.com/profile/Prophet05" target="_blank" rel="noopener noreferrer" class="link-pill inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tokyo-fg/5 border border-tokyo-fg/10 text-xs font-mono font-semibold text-tokyo-fg/80 hover:text-tokyo-cyan">Codeforces <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0" aria-hidden="true"></i></a>
+                </div>
+            </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="more-heading">
+            <h2 id="more-heading" class="font-mono text-xs uppercase tracking-[0.2em] text-tokyo-fg/45 mb-6">More on GitHub</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated flex flex-col border border-tokyo-fg/10">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">AURA: Cosmic Weather</h3>
                     <i data-lucide="cloud-lightning" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Predictive analytics for space weather financial impact. Uses ML and Monte Carlo simulations to aid insurers.</p>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Predictive analytics for space weather financial impact—<strong class="text-tokyo-fg/90">FastAPI</strong> backend, <strong class="text-tokyo-fg/90">React</strong> frontend, plus ML and Monte Carlo simulations to aid insurers.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">ML Forecasting</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Gemini AI</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-green">React · FastAPI</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-cyan">ML Forecasting</span>
+                    <span class="px-2 py-1 rounded chip-muted text-amber-600">Gemini AI</span>
                 </div>
-                <a href="https://github.com/kanishkautag/Aura-Codeissance2k25" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <a href="https://github.com/kanishkautag/Aura-Codeissance2k25" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Clause.ai</h3>
-                    <i data-lucide="scale" class="text-tokyo-fg/50 w-5 h-5"></i>
-                </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Legal assistant transforming plain English to legal clauses with a RAG pipeline and live web search risk evaluation.</p>
-                <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">RAG</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Firebase</span>
-                </div>
-                <a href="https://github.com/kanishkautag/Clause.ai" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-            </article>
-
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">ProSizeNet</h3>
                     <i data-lucide="dna" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Hybrid CNN-Transformer architecture achieving SOTA performance in predicting protein residue sizes.</p>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Hybrid CNN-Transformer architecture achieving SOTA performance in predicting protein residue sizes; includes paths toward on-device inference with <strong class="text-tokyo-fg/90">Core ML</strong> for Apple deployment.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">CNN</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">Bioinformatics</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-cyan">CNN · Transformer</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-green">Core ML</span>
+                    <span class="px-2 py-1 rounded chip-muted text-amber-600">Bioinformatics</span>
                 </div>
-                <a href="https://github.com/kanishkautag/ProSizeNet-Predicting-Protein-Residue-Size-Using-Machine-Learning" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <a href="https://github.com/kanishkautag/ProSizeNet-Predicting-Protein-Residue-Size-Using-Machine-Learning" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Multi-Agent Diagnosis</h3>
                     <i data-lucide="activity" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Intelligent medical diagnosis system utilizing CrewAI and Gemini agents behind a FastAPI interface.</p>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed"><strong class="text-tokyo-fg/90">Multi-agent architecture</strong> for triage and routing: CrewAI + Gemini agents orchestrated behind a <strong class="text-tokyo-fg/90">FastAPI</strong> service and a <strong class="text-tokyo-fg/90">React</strong> UI.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">CrewAI</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">FastAPI</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-accent">Multi-agent</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-cyan">React · FastAPI</span>
+                    <span class="px-2 py-1 rounded chip-muted text-amber-600">CrewAI · Gemini</span>
                 </div>
-                <a href="https://github.com/kanishkautag/Multi-Agent-Med-System" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <a href="https://github.com/kanishkautag/Multi-Agent-Med-System" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">AI Job Assistant</h3>
                     <i data-lucide="briefcase" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career co-pilot with smart job matching, ATS analysis, and personalized roadmap generation.</p>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career co-pilot with smart job matching, ATS analysis, cover letters, and course suggestions—wired to <strong class="text-tokyo-fg/90">Google (Gemini)</strong> APIs and complementary tooling for search and generation.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">Streamlit</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">ATS Parsing</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-green">Streamlit · FastAPI</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-accent">Google Gemini API</span>
+                    <span class="px-2 py-1 rounded chip-muted text-amber-600">ATS · NLP</span>
                 </div>
-                <a href="https://github.com/kanishkautag/AI-Job-Assistant" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <a href="https://github.com/kanishkautag/AI-Job-Assistant" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">SkillMorph</h3>
                     <i data-lucide="trending-up" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career recommendation platform combining live job listings and course suggestions with authentication.</p>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Career recommendation platform combining live job listings and course suggestions with auth—built with <strong class="text-tokyo-fg/90">React</strong>, <strong class="text-tokyo-fg/90">FastAPI</strong>, and Firebase for rapid hackathon iteration.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Hackathon</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">Firebase</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-green">React · FastAPI</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-cyan">Firebase</span>
+                    <span class="px-2 py-1 rounded chip-muted text-amber-600">Hackathon</span>
                 </div>
-                <a href="https://github.com/kanishkautag/Neural-Ninjas" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <a href="https://github.com/kanishkautag/Neural-Ninjas" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Paper Title Gen</h3>
                     <i data-lucide="book-open" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Fine-tuned GPT-2 model to generate contextually relevant research paper titles.</p>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed flex-grow">Fine-tuned <strong class="text-tokyo-fg/90">GPT-2</strong> for research-style title generation using full fine-tuning and <strong class="text-tokyo-fg/90">LoRA / QLoRA</strong>-style parameter-efficient training—highlights end-to-end model training, alongside the embedding, chunking, and <strong class="text-tokyo-fg/90">RAG</strong> patterns I use in larger retrieval systems.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">GPT-2</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">NLP</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-green">LoRA · QLoRA</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-cyan">GPT-2 fine-tuning</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-accent">RAG · NLP</span>
                 </div>
-                <a href="https://paper-title-generator.streamlit.app/" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">Live Demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <div class="flex flex-wrap gap-4 mt-auto pt-2 border-t border-tokyo-fg/10">
+                    <a href="https://paper-title-generator.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition">Live demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                    <a href="https://github.com/kanishkautag/Fine-Tuning-GPT-2-for-Research-Paper-Title-Generation" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 text-tokyo-fg/60 hover:text-tokyo-cyan transition">Source <i data-lucide="github" class="w-4 h-4"></i></a>
+                </div>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Student Heatmap</h3>
                     <i data-lucide="map" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
-                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Interactive heatmap visualizing the distribution of Indian students using Pandas and Folium.</p>
+                <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed flex-grow">Interactive heatmap visualizing the distribution of Indian students using Pandas and Folium.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Shiny</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">Data Viz</span>
+                    <span class="px-2 py-1 rounded chip-muted text-amber-600">Shiny</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-cyan">Data Viz</span>
                 </div>
-                <a href="https://kan05.shinyapps.io/indianstudent/" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">Live Demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <div class="flex flex-wrap gap-4 mt-auto pt-2 border-t border-tokyo-fg/10">
+                    <a href="https://kan05.shinyapps.io/indianstudent/" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition">Live demo <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                    <a href="https://github.com/kanishkautag/Indian-Students-Abroad" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 text-tokyo-fg/60 hover:text-tokyo-cyan transition">Source <i data-lucide="github" class="w-4 h-4"></i></a>
+                </div>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Therapy Chatbot</h3>
                     <i data-lucide="heart-handshake" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">Multi-agent mental wellness assistant with empathetic AI chat, journaling, and mood tracking.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-green">Wellness</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-accent">LLM</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-green">Wellness</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-accent">LLM</span>
                 </div>
-                <a href="https://github.com/kanishkautag/Mental-Therapy-Chatbot-App" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <a href="https://github.com/kanishkautag/Mental-Therapy-Chatbot-App" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
 
-            <article class="group glass-panel rounded-xl p-6 hover:bg-white/5 transition-all duration-300">
+            <article class="group glass-panel rounded-2xl p-6 card-elevated border border-tokyo-fg/10 flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold text-tokyo-cyan group-hover:text-tokyo-accent transition-colors">Drug Target MLP</h3>
                     <i data-lucide="microscope" class="text-tokyo-fg/50 w-5 h-5"></i>
                 </div>
                 <p class="text-sm text-tokyo-fg/80 mb-6 leading-relaxed">MLP model to classify drug target statuses using TF-IDF, achieving 95% validation accuracy.</p>
                 <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-orange">Scikit-learn</span>
-                    <span class="px-2 py-1 rounded bg-[#1a1b26] text-tokyo-cyan">TF-IDF</span>
+                    <span class="px-2 py-1 rounded chip-muted text-amber-600">Scikit-learn</span>
+                    <span class="px-2 py-1 rounded chip-muted text-tokyo-cyan">TF-IDF</span>
                 </div>
-                <a href="https://github.com/kanishkautag/DJ-ML-EVENT-NEXUS" target="_blank" class="text-sm font-bold flex items-center gap-2 hover:text-white transition">View Code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                <a href="https://github.com/kanishkautag/DJ-ML-EVENT-NEXUS" target="_blank" rel="noopener noreferrer" class="text-sm font-bold flex items-center gap-2 hover:text-tokyo-cyan transition mt-auto">View code <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </article>
-        </div>
+            </div>
+        </section>
     </main>
 
+    <footer class="relative z-10 site-footer py-10 px-6 text-center">
+        <p class="text-xs text-tokyo-fg/35 font-mono mb-4">© <span id="y"></span> Kanishka Utagikar</p>
+        <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono text-tokyo-fg/50" aria-label="Footer">
+            <a href="index.html" class="hover:text-tokyo-cyan transition">Home</a>
+            <a href="https://github.com/kanishkautag" target="_blank" rel="noopener noreferrer" class="hover:text-tokyo-cyan transition">GitHub</a>
+            <a href="contact.html" class="hover:text-tokyo-cyan transition">Connect</a>
+        </nav>
+    </footer>
+    <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+    <script src="theme.js"></script>
+    <script src="particles-bg.js"></script>
     <script src="oneko.js"></script>
     <script>lucide.createIcons();</script>
     
-    <!-- PASSIVE BACKGROUND SCRIPT -->
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 50;
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('bg-canvas').appendChild(renderer.domElement);
-        
-        const particleCount = 700;
-        const positions = new Float32Array(particleCount * 3);
-        const geometry = new THREE.BufferGeometry();
-        for (let i = 0; i < particleCount; i++) {
-            const r = 40 + Math.random() * 20;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
-            positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
-            positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-            positions[i*3+2] = r * Math.cos(phi);
-        }
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0x555577, size: 0.7, transparent: true, opacity: 0.5 }));
-        scene.add(particles);
-
-        function animateBg() {
-            requestAnimationFrame(animateBg);
-            particles.rotation.y += 0.001;
-            particles.rotation.x += 0.0005;
-            renderer.render(scene, camera);
-        }
-        animateBg();
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
 </body>
 </html>
