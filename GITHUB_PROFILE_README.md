@@ -1,8 +1,8 @@
 <!--
   PROFILE README — copy into: github.com/kanishkautag/kanishkautag/README.md
 
-  ANIMATED BANNER lives in THIS repo (push first):
-  github-profile-assets/readme-oneko-strip.svg
+  BANNER lives in THIS repo (push first):
+  github-profile-assets/oneko.gif  (classic Oneko monochrome sprite)
 
   Image loads from raw.githubusercontent.com — branch must match yours (default: main).
 
@@ -12,9 +12,7 @@
 <!-- ═══ ASSET BASE: kanishkautag/Portfolio-Website @ main ═══ -->
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/readme-oneko-strip.svg" width="98%" alt="Oneko-style cat patrol — animated SVG" />
-
-<sub>Motion is <b>SMIL inside SVG</b> (no JavaScript). If it looks static, GitHub or your viewer is flattening animation — open the .svg directly to confirm.</sub>
+<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/oneko.gif" width="720" alt="Oneko cat — classic monochrome sprite" />
 
 <br/><br/>
 
