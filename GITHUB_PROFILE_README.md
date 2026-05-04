@@ -1,12 +1,10 @@
 <!--
   PROFILE README — copy into: github.com/kanishkautag/kanishkautag/README.md
 
-  ANIMATED BANNERS live in THIS repo (push first):
-  github-profile-assets/readme-pacman-maze.svg
-  github-profile-assets/readme-voxel-hoppers.svg
+  ANIMATED BANNER lives in THIS repo (push first):
+  github-profile-assets/readme-oneko-strip.svg
 
-  Images load from raw.githubusercontent.com — branch must match yours (default: main).
-  If you rename the repo/branch, update the two URLs below.
+  Image loads from raw.githubusercontent.com — branch must match yours (default: main).
 
   Stats mirror: stats-github-readme.vercel.app (official vercel instance rate-limits).
 -->
@@ -14,8 +12,7 @@
 <!-- ═══ ASSET BASE: kanishkautag/Portfolio-Website @ main ═══ -->
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/readme-pacman-maze.svg" width="98%" alt="Pac-Man lane — animated SVG" />
-<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/readme-voxel-hoppers.svg" width="92%" alt="Hopping voxel crew — animated SVG" />
+<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/readme-oneko-strip.svg" width="98%" alt="Oneko-style cat patrol — animated SVG" />
 
 <sub>Motion is <b>SMIL inside SVG</b> (no JavaScript). If it looks static, GitHub or your viewer is flattening animation — open the .svg directly to confirm.</sub>
 
@@ -23,9 +20,9 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=VT323&size=26&pause=900&color=F5F5F5&center=true&vCenter=true&width=920&height=72&lines=Kanishka+Utagikar;Applied+AI+%C2%B7+Machine+learning+%C2%B7+Problem+solving;MENA+AI+%28remote%29+%C2%B7+B.E.+IT+%C2%B7+TSEC+Mumbai" alt="Intro typing" />
 
-### Noir · India · builds that ship
+### Applied AI · India · ships real systems
 
-I care about **applied AI**, **machine learning**, and **problem solving** — turning messy real-world constraints into systems that actually run.
+**Applied AI**, **machine learning**, and **problem solving** — turning messy constraints into things that run in production, not just in slides.
 
 <br/>
 

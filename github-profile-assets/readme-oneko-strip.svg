@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 720 118" width="720" height="118" role="img" aria-label="Oneko-style cat patrol">
+  <title>Oneko-style cat</title>
+  <defs>
+    <path id="nekoPath" d="M 40 86 C 160 48 360 108 680 86" fill="none"/>
+  </defs>
+  <rect width="720" height="118" fill="#0a0a0a"/>
+  <rect x="28" y="92" width="664" height="1.5" fill="#242424"/>
+  <g fill="#333333" opacity="0.5">
+    <circle cx="72" cy="97" r="1.8"/><circle cx="132" cy="97" r="1.8"/><circle cx="192" cy="97" r="1.8"/><circle cx="252" cy="97" r="1.8"/>
+    <circle cx="312" cy="97" r="1.8"/><circle cx="372" cy="97" r="1.8"/><circle cx="432" cy="97" r="1.8"/><circle cx="492" cy="97" r="1.8"/>
+    <circle cx="552" cy="97" r="1.8"/><circle cx="612" cy="97" r="1.8"/><circle cx="672" cy="97" r="1.8"/>
+  </g>
+  <g>
+    <animateMotion dur="7.5s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#nekoPath"/>
+    </animateMotion>
+    <g transform="translate(-16,-20)">
+        <ellipse cx="14" cy="24" rx="17" ry="12" fill="#f7f7f7" stroke="#141414" stroke-width="1.2"/>
+        <circle cx="14" cy="7" r="11" fill="#f7f7f7" stroke="#141414" stroke-width="1.2"/>
+        <polygon points="4,-4 2,3 8,2" fill="#141414"/>
+        <polygon points="22,-4 20,2 26,3" fill="#141414"/>
+        <ellipse cx="9" cy="7" rx="2.2" ry="2.6" fill="#1a1a1a"/>
+        <ellipse cx="18" cy="7" rx="2.2" ry="2.6" fill="#1a1a1a"/>
+        <circle cx="9.5" cy="6" r="0.7" fill="#fafafa"/>
+        <circle cx="18.5" cy="6" r="0.7" fill="#fafafa"/>
+        <rect x="7" y="14" width="14" height="3.5" rx="1" fill="#b4232c"/>
+        <g transform="translate(28,22)">
+          <g>
+            <animateTransform attributeName="transform" attributeType="XML" type="rotate" values="-10; 12; -10" dur="0.42s" repeatCount="indefinite" calcMode="linear"/>
+            <path d="M 0 0 Q 12 -12 26 2" fill="none" stroke="#141414" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+  </g>
+</svg>
