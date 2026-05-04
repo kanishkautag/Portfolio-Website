@@ -1,0 +1,46 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 720 168" width="720" height="168" role="img" aria-label="Pac-Man style runner on a dark maze stripe">
+  <title>Pac stripe animation</title>
+  <defs>
+    <path id="pmTrack" d="M 56 92 L 664 92" fill="none"/>
+  </defs>
+  <rect width="720" height="168" fill="#070707"/>
+  <rect x="40" y="84" width="640" height="2" fill="#2a2a2a"/>
+  <g fill="#333333">
+    <circle cx="72" cy="92" r="3"/><circle cx="120" cy="92" r="3"/><circle cx="168" cy="92" r="3"/><circle cx="216" cy="92" r="3"/>
+    <circle cx="264" cy="92" r="3"/><circle cx="312" cy="92" r="3"/><circle cx="360" cy="92" r="3"/><circle cx="408" cy="92" r="3"/>
+    <circle cx="456" cy="92" r="3"/><circle cx="504" cy="92" r="3"/><circle cx="552" cy="92" r="3"/><circle cx="600" cy="92" r="3"/>
+    <circle cx="648" cy="92" r="3"/>
+  </g>
+  <g fill="#4a4a4a" opacity="0.9">
+    <circle cx="96" cy="92" r="1.8"/><circle cx="144" cy="92" r="1.8"/><circle cx="192" cy="92" r="1.8"/><circle cx="240" cy="92" r="1.8"/>
+    <circle cx="288" cy="92" r="1.8"/><circle cx="336" cy="92" r="1.8"/><circle cx="384" cy="92" r="1.8"/><circle cx="432" cy="92" r="1.8"/>
+    <circle cx="480" cy="92" r="1.8"/><circle cx="528" cy="92" r="1.8"/><circle cx="576" cy="92" r="1.8"/><circle cx="624" cy="92" r="1.8"/>
+  </g>
+  <g opacity="0.9">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="640,66; 360,66; 640,66" dur="6.4s" repeatCount="indefinite"/>
+      <rect x="0" y="0" width="26" height="30" rx="11" fill="#dedede"/>
+      <polygon points="0,24 6,34 12,24 18,34 24,24 26,24 26,0 0,0" fill="#dedede"/>
+      <circle cx="9" cy="14" r="3.2" fill="#0a0a0a"/><circle cx="17" cy="14" r="3.2" fill="#0a0a0a"/>
+    </g>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="660,66; 400,66; 660,66" dur="5.1s" repeatCount="indefinite" begin="0.55s"/>
+      <rect x="0" y="0" width="26" height="30" rx="11" fill="#9a9a9a"/>
+      <polygon points="0,24 6,34 12,24 18,34 24,24 26,24 26,0 0,0" fill="#9a9a9a"/>
+      <circle cx="9" cy="14" r="3.2" fill="#0a0a0a"/><circle cx="17" cy="14" r="3.2" fill="#0a0a0a"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <animateMotion dur="5.8s" repeatCount="indefinite" rotate="auto">
+        <mpath xlink:href="#pmTrack"/>
+      </animateMotion>
+      <circle cx="0" cy="0" r="13" fill="#ffcc00"/>
+      <path fill="#070707" d="M 0 0 L 22 -11 L 22 11 Z">
+        <animateTransform attributeName="transform" type="rotate" values="0;-40;0" dur="0.26s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  <text x="360" y="34" text-anchor="middle" fill="#f0f0f0" font-family="ui-monospace, Consolas, monospace" font-size="13" letter-spacing="0.24em">ARCADE LANE</text>
+  <text x="360" y="148" text-anchor="middle" fill="#666666" font-family="ui-monospace, Consolas, monospace" font-size="10" letter-spacing="0.35em">MONO + PAC | SVG SMIL | NO SCRIPTS</text>
+</svg>
