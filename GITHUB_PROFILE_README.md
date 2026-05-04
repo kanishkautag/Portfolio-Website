@@ -1,10 +1,10 @@
 <!--
   PROFILE README — copy into: github.com/kanishkautag/kanishkautag/README.md
 
-  ANIMATED BANNER (generated): github-profile-assets/oneko-runner.gif
-  Source sheet: github-profile-assets/oneko.gif  |  Regenerate: python scripts/build_oneko_banner.py
+  BANNER (SVG, SMIL): github-profile-assets/oneko-runner.svg  — from oneko-runner.gif via python scripts/gif_to_runner_svg.py
+  GIF builder: python scripts/build_oneko_banner.py  |  sheet: github-profile-assets/oneko.gif
 
-  Image loads from raw.githubusercontent.com — branch must match yours (default: main).
+  Assets load from raw.githubusercontent.com — branch must match yours (default: main).
 
   Stats mirror: stats-github-readme.vercel.app (official vercel instance rate-limits).
 -->
@@ -12,7 +12,7 @@
 <!-- ═══ ASSET BASE: kanishkautag/Portfolio-Website @ main ═══ -->
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/oneko-runner.gif" width="720" alt="Oneko cat — patrol + random poses" />
+<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/oneko-runner.svg" width="720" alt="Oneko cat — SMIL animation from GIF frames" />
 
 <br/><br/>
 
