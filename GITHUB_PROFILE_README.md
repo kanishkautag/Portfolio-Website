@@ -1,8 +1,8 @@
 <!--
   PROFILE README — copy into: github.com/kanishkautag/kanishkautag/README.md
 
-  BANNER lives in THIS repo (push first):
-  github-profile-assets/oneko.gif  (classic Oneko monochrome sprite)
+  ANIMATED BANNER (generated): github-profile-assets/oneko-runner.gif
+  Source sheet: github-profile-assets/oneko.gif  |  Regenerate: python scripts/build_oneko_banner.py
 
   Image loads from raw.githubusercontent.com — branch must match yours (default: main).
 
@@ -12,7 +12,7 @@
 <!-- ═══ ASSET BASE: kanishkautag/Portfolio-Website @ main ═══ -->
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/oneko.gif" width="720" alt="Oneko cat — classic monochrome sprite" />
+<img src="https://raw.githubusercontent.com/kanishkautag/Portfolio-Website/main/github-profile-assets/oneko-runner.gif" width="720" alt="Oneko cat — patrol + random poses" />
 
 <br/><br/>
 
